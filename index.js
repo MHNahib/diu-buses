@@ -1,10 +1,17 @@
 const express = require("express");
 
+// routers path
+const home = require("./routes/home");
+
+// middleware
+const error = require("./middleware/error");
+
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("index");
-});
+// routers
+app.use("/", home);
+
+app.use(error);
 
 // port
 const port = process.env.PORT || 3000;
