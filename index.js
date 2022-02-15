@@ -1,10 +1,12 @@
 const express = require("express");
+const express = require("helmet");
 const asyncError = require("express-async-errors");
 // routers path
 const home = require("./routes/home");
 const about = require("./routes/about");
 
 // middleware
+app.use(helmet());
 const error = require("./middleware/error");
 
 const app = express();
