@@ -41,3 +41,6 @@ const validation = (body) => {
   });
   return schema.validate(body);
 };
+
+module.exports.Employee = Employee;
+module.exports.employeeValidation = validation;
