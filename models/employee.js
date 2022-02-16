@@ -29,6 +29,13 @@ const employeentSchema = new mongoose.Schema({
   },
 });
 
+employeentSchema.methods.generateAuthToken = function () {
+  return jwt.sign(
+    { _id: this._id, employeeId: this.employeeId },
+    process.env.JWT_TOKEN_SECRET
+  );
+};
+
 const Employee = new mongoose.model("Employee", employeentSchema);
 
 // joi validation
