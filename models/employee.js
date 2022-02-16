@@ -8,6 +8,7 @@ const employeentSchema = new mongoose.Schema({
     required: true,
     minlength: 9,
     maxlength: 9,
+    unique: true,
   },
   employeeName: {
     type: String,
@@ -20,6 +21,7 @@ const employeentSchema = new mongoose.Schema({
   },
   active: {
     type: Boolean,
+    default: true,
   },
   role: {
     type: String,
