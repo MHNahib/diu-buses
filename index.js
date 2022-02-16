@@ -10,6 +10,7 @@ const employee = require("./routes/auth/employee");
 const bus = require("./routes/bus");
 const route = require("./routes/route");
 const schedule = require("./routes/schedule");
+const pricing = require("./routes/pricing");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/auth/employee", employee);
 app.use("/bus", bus);
 app.use("/route", route);
 app.use("/schedule", schedule);
+app.use("/pricing", pricing);
 
 app.use(error);
 
