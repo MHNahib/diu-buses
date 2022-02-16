@@ -7,6 +7,7 @@ const home = require("./routes/home");
 const about = require("./routes/about");
 const student = require("./routes/auth/student");
 const employee = require("./routes/auth/employee");
+const bus = require("./routes/bus");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/", home);
 app.use("/about", about);
 app.use("/auth/student", student);
 app.use("/auth/employee", employee);
+app.use("/bus", bus);
 
 app.use(error);
 
