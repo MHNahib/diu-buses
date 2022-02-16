@@ -45,7 +45,7 @@ const validation = (body) => {
     employeeId: Joi.string().min(9).max(9).required(),
     employeeName: Joi.string().max(255).required(),
     password: Joi.string().required(),
-    active: Joi.boolean().required(),
+    active: Joi.boolean(),
     role: Joi.string().required(),
   });
   return schema.validate(body);
