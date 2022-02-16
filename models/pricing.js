@@ -9,14 +9,16 @@ const pricingSchema = new mongoose.Schema({
     ref: "Routes",
   },
   from: {
-    type: String,
+    type: Number,
     required: true,
-    maxlength: 255,
+    min: 0,
+    max: 1000,
   },
   to: {
-    type: String,
+    type: Number,
     required: true,
-    maxlength: 255,
+    min: 0,
+    max: 1000,
   },
 });
 
@@ -27,8 +29,8 @@ const validation = (body) => {
   // joi schema
   const schema = Joi.object({
     routeId: Joi.objectId().required(),
-    from: Joi.string().max(255).required(),
-    to: Joi.string().max(255).required(),
+    from: Joi.number().min(0).max(1000).required(),
+    to: Joi.number().min(0).max(1000).required(),
   });
 
   return schema.validate(body);
