@@ -11,6 +11,8 @@ const bus = require("./routes/bus");
 const route = require("./routes/route");
 const schedule = require("./routes/schedule");
 const pricing = require("./routes/pricing");
+const tickets = require("./routes/ticket");
+const drivers = require("./routes/driver");
 
 const app = express();
 
@@ -28,6 +30,8 @@ app.use("/bus", bus);
 app.use("/route", route);
 app.use("/schedule", schedule);
 app.use("/pricing", pricing);
+app.use("/tickets", tickets);
+app.use("/drivers", drivers);
 
 app.use(error);
 
