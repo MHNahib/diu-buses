@@ -21,6 +21,9 @@ const busSchema = new mongoose.Schema({
     default: 0,
     required: true,
   },
+  booked: {
+    type: [String],
+  },
 });
 
 const Bus = new mongoose.model("Bus", busSchema);
