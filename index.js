@@ -1,7 +1,14 @@
+require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const helmet = require("helmet");
 const asyncError = require("express-async-errors");
+const cookieParser = require("cookie-parser");
 const db = require("./setup/db");
+const passport = require("passport");
+const flash = require("connect-flash");
+const flashMsg = require("./middleware/flash");
+const session = require("express-session");
 // routers path
 const home = require("./routes/home");
 const about = require("./routes/about");
@@ -16,11 +23,37 @@ const tickets = require("./routes/ticket");
 const drivers = require("./routes/driver");
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+
+// session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// flash
+app.use(flash());
+app.use(flashMsg);
+
+// public folder
+app.use(express.static(__dirname + "/public"));
+
+// passport config
+// const initializePassport = require("./config/passport.config");
+
+// initializePassport(passport);
 
 // middleware
 app.use(helmet());
 app.use(express.json());
+app.use(cookieParser());
 const error = require("./middleware/error");
+
+// view engine
+app.set("view engine", "ejs");
 
 // routers
 app.use("/", home);

@@ -1,10 +1,12 @@
 const express = require("express");
 const { Driver, driverValidation } = require("../models/dirver");
+const auth = require("../middleware/auth");
+const roles = require("../middleware/roles");
 const mongoose = require("mongoose");
 const router = express.Router();
 
 // get all the driver list
-router.get("/", async (req, res) => {
+router.get("/", [auth, roles], async (req, res) => {
   const driver = await Driver.find().select("driverName phone");
 
   res.send(driver);

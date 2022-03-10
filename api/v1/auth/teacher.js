@@ -5,25 +5,15 @@ const router = express.Router();
 
 const { Teacher, teacherValidation } = require("../../models/teacher");
 
-router.get("/signup", (req, res) => {
-  // res.render("studentLogin");
-  res.render("teacherSignup", { error: undefined });
-});
-
 router.post("/signup", async (req, res) => {
   // validate request body
   const { error } = teacherValidation(req.body);
-  if (error)
-    return res
-      .status(400)
-      .render("teacherSignup", { error: error.details[0].message });
+  if (error) return res.status(400).send(error.details[0].message);
 
   // check user is already exist or not
   let user = await Teacher.findOne({ employeeId: req.body.employeeId });
   if (user)
-    return res.status(400).render("teacherSignup", {
-      error: `${req.body.employeeId} already exists`,
-    });
+    return res.status(400).send(`${req.body.employeeId} already exists`);
 
   // hash password
   let salt = await bcrypt.genSalt(10);
@@ -33,63 +23,40 @@ router.post("/signup", async (req, res) => {
     employeeId: req.body.employeeId,
     employeeName: req.body.employeeName,
     password: password,
-    email: req.body.email,
-    password: password,
-    gender: req.body.gender,
   });
 
   await user.save();
 
-  // res.send({
-  //   employeeId: user.employeeId,
-  //   employeeName: user.employeeName,
-  //   role: user.role,
-  // });
-  req.flash("success_msg", "You are now registared. Now you can login.");
-  res.redirect("/auth/teacher/login");
-});
-
-router.get("/login", (req, res) => {
-  // res.render("studentLogin");
-  res.render("teacherLogin", { error: undefined });
+  res.send({
+    employeeId: user.employeeId,
+    employeeName: user.employeeName,
+    role: user.role,
+  });
 });
 
 router.post("/login", async (req, res) => {
   // vaidate request body
   const { error } = validation(req.body);
-  if (error)
-    return res
-      .status(400)
-      .render("teacherLogin", { error: error.details[0].message });
+  if (error) return res.status(400).send(error.details[0].message);
 
   // check user is already exist or not
   let user = await Teacher.findOne({ employeeId: req.body.employeeId });
   if (!user)
-    return res.status(400).render("teacherLogin", {
-      error: `${req.body.employeeId} user not found`,
-    });
+    return res.status(400).send(`${req.body.employeeId} user not found`);
 
   // validate password
   const isValid = await bcrypt.compare(req.body.password, user.password);
 
   if (!isValid)
-    return res.status(403).render("teacherLogin", {
-      error: "Teacher Id or password is incorrect.",
-    });
+    return res.status(403).send(`Teacher id or password is not currect`);
 
   // sign jwt token
 
   const token = user.generateAuthToken();
-  // res.header("x-auth-token", token).send({
-  //   name: user.employeeName,
-  //   id: user.employeeId,
-  // });
-
-  res.cookie("jwt", token, {
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 30,
+  res.header("x-auth-token", token).send({
+    name: user.employeeName,
+    id: user.employeeId,
   });
-  res.redirect("/");
 });
 
 // login validation

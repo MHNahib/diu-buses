@@ -1,0 +1,59 @@
+.seat-layout {
+  border: 1px solid #bebebe;
+  padding: 10px;
+  margin: 10px auto;
+  padding-bottom: 15px;
+}
+
+.fa-steering-wheel:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f622";
+}
+ul {
+  padding: 0px 0 0 6px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.seat-layout ul li {
+  width: 25px;
+  height: 25px;
+  float: left;
+  margin-right: 6px;
+  margin-top: 9px;
+  padding: 0px;
+}
+
+.bg-none {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding: 20px;
+  background-color: #98c157;
+  color: white;
+}
+
+.box{
+  padding: 10px;
+}
+
+.spinner {
+  width: 18px;
+  height: 22px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 16px;
+}
+
+.driver-steering {
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-right: 7px;
+}
