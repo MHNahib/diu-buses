@@ -1,0 +1,27 @@
+<%- include("layout/dashboardHeader") %>
+    <div class="container">
+
+        <%- include('./partials/messages') %>
+            <form method="post" action="/dashboard/bus/">
+                <div class="mb-3">
+                    <label for="nameId" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="nameId" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="typeId" class="form-label">Type</label>
+                    <select class="form-select" name="type">
+                        <option value="Non Ac" selected>Non Ac</option>
+                        <option value="Ac">Ac</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="seatsId" class="form-label">Seats</label>
+                    <input type="number" class="form-control" id="seatsId" name="seats">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+    </div>
+    <%- include("layout/dashboardFooter") %>
