@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
   const responce = await axios.get(`${process.env.LOCAL_URL}/route`);
   res.render("route", { responce: responce.data });
 });
+
 router.get("/add", async (req, res) => {
   res.render("createRoute", {});
 });
