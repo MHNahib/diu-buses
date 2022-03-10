@@ -34,7 +34,7 @@ const validation = (body) => {
   const schema = Joi.object({
     name: Joi.string().min(3).max(255).required(),
     type: Joi.string().max(255).required(),
-    sits: Joi.number().min(0).max(100).required(),
+    seats: Joi.number().min(0).max(100).required(),
   });
 
   return schema.validate(body);
