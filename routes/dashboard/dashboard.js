@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
-const { Driver, driverValidation } = require("../models/dirver");
-const auth = require("../middleware/auth");
-const roles = require("../middleware/roles");
+const axios = require("axios");
+// const auth = require("../middleware/auth");
+// const roles = require("../middleware/roles");
 const mongoose = require("mongoose");
 const router = express.Router();
 

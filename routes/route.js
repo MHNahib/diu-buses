@@ -5,7 +5,17 @@ const router = express.Router();
 
 // get all the route list
 router.get("/", async (req, res) => {
-  const route = await Route.find().sort("name");
+  const route = await Route.find()
+    .sort("name")
+    .select("_id routeNo busStoppages routeName");
+
+  res.send(route);
+});
+
+router.get("/:id", async (req, res) => {
+  const route = await Route.findById(req.params.id).select(
+    "_id routeNo busStoppages routeName"
+  );
 
   res.send(route);
 });

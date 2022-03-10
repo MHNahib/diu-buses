@@ -9,6 +9,7 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const flashMsg = require("./middleware/flash");
 const session = require("express-session");
+const methodOverride = require("method-override");
 // routers path
 const home = require("./routes/home");
 const about = require("./routes/about");
@@ -21,7 +22,8 @@ const schedule = require("./routes/schedule");
 const pricing = require("./routes/pricing");
 const tickets = require("./routes/ticket");
 const drivers = require("./routes/driver");
-const dashboard = require("./routes/dashboard");
+const dashboard = require("./routes/dashboard/dashboard");
+const dashboardRoute = require("./routes/dashboard/routes");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -38,6 +40,7 @@ app.use(
 // flash
 app.use(flash());
 app.use(flashMsg);
+app.use(methodOverride("_method"));
 
 // public folder
 app.use(express.static(__dirname + "/public"));
@@ -69,6 +72,7 @@ app.use("/pricing", pricing);
 app.use("/tickets", tickets);
 app.use("/drivers", drivers);
 app.use("/dashboard", dashboard);
+app.use("/dashboard/route", dashboardRoute);
 
 app.use(error);
 
