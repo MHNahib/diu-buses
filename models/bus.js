@@ -14,7 +14,7 @@ const busSchema = new mongoose.Schema({
     required: true,
     maxlength: 255,
   },
-  sits: {
+  seats: {
     type: Number,
     min: 0,
     max: 100,
