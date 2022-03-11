@@ -46,6 +46,14 @@ const scheduleSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  start: {
+    type: String,
+    required: true,
+  },
+  destination: {
+    type: String,
+    required: true,
+  },
   bookedBy: {
     type: [
       {
@@ -72,6 +80,8 @@ const validation = (body) => {
   const schema = Joi.object({
     routeId: Joi.objectId().required(),
     startTime: Joi.string().required(),
+    start: Joi.string().required(),
+    destination: Joi.string().required(),
     busId: Joi.objectId().required(),
     driverId: Joi.objectId().required(),
   });
