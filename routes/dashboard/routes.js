@@ -26,8 +26,14 @@ router.post("/", async (req, res) => {
       .render("editRoute", { error: error.details[0].message });
 
   let busStoppageStr = req.body.busStoppages.replace(/\s+/g, " ").trim();
-
-  req.body.busStoppages = busStoppageStr.split(",");
+  // console.log(busStoppageStr);
+  const splitArray = busStoppageStr.split(",");
+  // console.log(splitArray);
+  const trimmed = splitArray.map((element) => {
+    return element.trim();
+  });
+  // console.log(trimmed);
+  req.body.busStoppages = trimmed;
 
   const route = new Route({
     routeNo: req.body.routeNo,
@@ -60,8 +66,14 @@ router.post("/:id", async (req, res) => {
   if (!route) return res.status(404).send(`Route not found`);
 
   let busStoppageStr = req.body.busStoppages.replace(/\s+/g, " ").trim();
-
-  req.body.busStoppages = busStoppageStr.split(",");
+  // console.log(busStoppageStr);
+  const splitArray = busStoppageStr.split(",");
+  // console.log(splitArray);
+  const trimmed = splitArray.map((element) => {
+    return element.trim();
+  });
+  // console.log(trimmed);
+  req.body.busStoppages = trimmed;
 
   route.routeNo = req.body.routeNo;
   route.busStoppages = req.body.busStoppages;
