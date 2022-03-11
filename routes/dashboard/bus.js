@@ -18,7 +18,7 @@ router.get("/add", async (req, res) => {
 // add new bus
 router.post("/", async (req, res) => {
   // validate request
-  console.log(typeof req.body.seats);
+  // console.log(typeof req.body.seats);
   const { error } = busValidation(req.body);
   if (error)
     return res
