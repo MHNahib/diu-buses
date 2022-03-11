@@ -21,7 +21,7 @@ router.get("/add", async (req, res) => {
   // console.log(route);
 
   const rowList = [];
-  let location = [];
+  // let location = [];
 
   // store location
   for (let i = 0; i < route.length; i++) {
@@ -30,13 +30,7 @@ router.get("/add", async (req, res) => {
     }
   }
 
-  // removed duplicacy
-  rowList.forEach((c) => {
-    if (!location.includes(c)) {
-      location.push(c);
-    }
-  });
-  // console.log(location);
+  const location = [...new Set(rowList)];
 
   res.render("createschedule", { bus, route, driver, location });
 });
@@ -48,7 +42,7 @@ router.post("/", async (req, res) => {
   let driver = await Driver.find().sort("driverName").select("driverName");
 
   const rowList = [];
-  let location = [];
+  // let location = [];
 
   // store location
   for (let i = 0; i < route.length; i++) {
@@ -57,12 +51,7 @@ router.post("/", async (req, res) => {
     }
   }
 
-  // removed duplicacy
-  rowList.forEach((c) => {
-    if (!location.includes(c)) {
-      location.push(c);
-    }
-  });
+  const location = [...new Set(rowList)];
 
   // validate request
   //   console.log(req.body);
@@ -118,7 +107,7 @@ router.get("/:id", async (req, res) => {
   const driver = await Driver.find().sort("driverName").select("driverName");
 
   const rowList = [];
-  let location = [];
+  // let location = [];
 
   // store location
   for (let i = 0; i < route.length; i++) {
@@ -127,12 +116,7 @@ router.get("/:id", async (req, res) => {
     }
   }
 
-  // removed duplicacy
-  rowList.forEach((c) => {
-    if (!location.includes(c)) {
-      location.push(c);
-    }
-  });
+  const location = [...new Set(rowList)];
 
   res.render("editSchedule", {
     responce: schadule,
@@ -154,7 +138,7 @@ router.post("/:id", async (req, res) => {
   let driver = await Driver.find().sort("driverName").select("driverName");
 
   const rowList = [];
-  let location = [];
+  // let location = [];
 
   // store location
   for (let i = 0; i < route.length; i++) {
@@ -163,14 +147,9 @@ router.post("/:id", async (req, res) => {
     }
   }
 
-  // removed duplicacy
-  rowList.forEach((c) => {
-    if (!location.includes(c)) {
-      location.push(c);
-    }
-  });
+  const location = [...new Set(rowList)];
 
-  console.log(req.body);
+  // console.log(req.body);
   // validate request
   const { error } = scheduleValidation(req.body);
   if (error)
