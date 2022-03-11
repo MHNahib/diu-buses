@@ -18,6 +18,27 @@
                     <input type="time" class="form-control" id="startTimeId" name="startTime">
                 </div>
                 <div class="mb-3">
+                    <label for="startId" class="form-label">Starting position</label>
+                    <select class="form-select" name="start">
+                        <% for(var i=0; i < location.length; i++) { %>
+                            <option value="<%= location[i] %>">
+                                <%= location[i] %>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="startId" class="form-label">Destination</label>
+                    <select class="form-select" name="destination">
+                        <% for(var i=0; i < location.length; i++) { %>
+                            <option value="<%= location[i] %>">
+                                <%= location[i] %>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+
+                <div class="mb-3">
                     <label for="busId" class="form-label">Bus Name</label>
                     <select class="form-select" name="busId">
                         <% for(var i=0; i < bus.length; i++) { %>

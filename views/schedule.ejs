@@ -25,11 +25,12 @@
                                     <tr class="text-center">
                                         <th style="width: 5%" scope="col">#</th>
                                         <th style="width: 10%" scope="col">Route Name</th>
+                                        <th style="width: 10%" scope="col">Start &#x2192 Destination</th>
                                         <th style="width: 15%" scope="col">Bus Number</th>
                                         <th style="width: 15%" scope="col">Driver Name</th>
                                         <th style="width: 15%" scope="col">Phone Number</th>
-                                        <th style="width: 15%" scope="col">Time</th>
-                                        <th style="width: 15%" scope="col">Availabe Seats</th>
+                                        <th style="width: 8%" scope="col">Time</th>
+                                        <th style="width: 5%" scope="col">Availabe Seats</th>
                                         <th style="width: 20%" scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -39,8 +40,11 @@
                                             <th scope="row">
                                                 <%= i + 1 %>
                                             </th>
-                                            <td>
+                                            <th scope="row">
                                                 <%= responce[i].routeName %>
+                                            </th>
+                                            <td>
+                                                <%= responce[i].start %> &#x2192 <%= responce[i].destination %>
                                             </td>
                                             <td>
                                                 <%= responce[i].busName %>
