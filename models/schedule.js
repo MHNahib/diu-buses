@@ -24,6 +24,10 @@ const scheduleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  busStoppages: {
+    type: [String],
+    required: true,
+  },
   driverId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Drivers",
