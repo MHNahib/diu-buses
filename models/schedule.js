@@ -8,20 +8,57 @@ const scheduleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Routes",
   },
+  routeName: {
+    type: String,
+    required: true,
+  },
   startTime: {
     type: String,
     required: true,
   },
-  departureTime: {
+  busId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Buses",
+  },
+  busName: {
     type: String,
     required: true,
   },
+  driverId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Drivers",
+  },
+  driverName: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    min: 11,
+    max: 14,
+    required: true,
+  },
+  availabeSeats: {
+    type: Number,
+    default: 0,
+  },
+  bookedBy: {
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Tickets",
+      },
+    ],
+  },
+  bookedSeats: {
+    type: [String],
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
-
-/**
- *  todo:
- *  1. update time option in startTIme and departureTime
- */
 
 const Schedule = new mongoose.model("Schedule", scheduleSchema);
 
@@ -31,7 +68,8 @@ const validation = (body) => {
   const schema = Joi.object({
     routeId: Joi.objectId().required(),
     startTime: Joi.string().required(),
-    departureTime: Joi.string().required(),
+    busId: Joi.objectId().required(),
+    driverId: Joi.objectId().required(),
   });
 
   return schema.validate(body);
