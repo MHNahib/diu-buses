@@ -27,6 +27,7 @@ const dashboardRoute = require("./routes/dashboard/routes");
 const dashboardDriver = require("./routes/dashboard/driver");
 const dashboardBus = require("./routes/dashboard/bus");
 const dashboardSchedule = require("./routes/dashboard/schedule");
+const search = require("./routes/search");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -74,6 +75,7 @@ app.use("/schedule", schedule);
 app.use("/pricing", pricing);
 app.use("/tickets", tickets);
 app.use("/drivers", drivers);
+app.use("/search", search);
 app.use("/dashboard", dashboard);
 app.use("/dashboard/route", dashboardRoute);
 app.use("/dashboard/drivers", dashboardDriver);
