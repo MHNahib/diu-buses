@@ -29,6 +29,7 @@ const dashboardBus = require("./routes/dashboard/bus");
 const dashboardSchedule = require("./routes/dashboard/schedule");
 const search = require("./routes/search");
 const bookSeat = require("./routes/book.seat");
+const requestNewBus = require("./routes/request.new.bus");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -83,6 +84,7 @@ app.use("/dashboard/route", dashboardRoute);
 app.use("/dashboard/drivers", dashboardDriver);
 app.use("/dashboard/bus", dashboardBus);
 app.use("/dashboard/schedule", dashboardSchedule);
+app.use("/dashboard/request", requestNewBus);
 
 app.use(error);
 
