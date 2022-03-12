@@ -19,6 +19,11 @@ const requestNewBus = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
 const RequestNewBus = new mongoose.model("RequestNewBus", requestNewBus);
