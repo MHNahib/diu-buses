@@ -201,10 +201,10 @@ router.post("/:id", async (req, res) => {
   }
   // check bus is valid or not
   let schadule = await Schedule.findById(requestNewBus.newSchedule);
-  console.log(`on post`);
+  // console.log(`on post`);
   if (!requestNewBus.newSchedule)
     if (!schadule) return res.status(404).send(`Schedule not found`);
-  console.log(schadule);
+  // console.log(schadule);
   schadule.routeId = req.body.routeId;
   schadule.routeName = route.routeName;
   schadule.busStoppages = route.busStoppages;
