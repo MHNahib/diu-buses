@@ -29,12 +29,18 @@ router.post("/:id", [auth, booked], async (req, res) => {
   }
 
   // console.log(schedule.availabeSeats);
-  if (schedule.availabeSeats <= 10) {
-    const requestNewBus = new RequestNewBus({
-      bookedSchedule: schedule._id,
-      routeName: schedule.routeName,
-    });
-    await requestNewBus.save();
+
+  const requestNewBus = await RequestNewBus.find({
+    bookedSchedule: schedule._id,
+  });
+  if (requestNewBus.length === 0) {
+    if (schedule.availabeSeats <= 10) {
+      const requestNewBus = new RequestNewBus({
+        bookedSchedule: schedule._id,
+        routeName: schedule.routeName,
+      });
+      await requestNewBus.save();
+    }
   }
 
   let selectedSeatNumber = 0;
