@@ -53,6 +53,7 @@ teacherSchema.methods.generateAuthToken = function () {
       userName: this.employeeName,
       role: this.role,
       isAdmin: this.isAdmin,
+      gender: this.gender,
     },
     process.env.JWT_TOKEN_SECRET,
     {

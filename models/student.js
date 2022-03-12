@@ -53,6 +53,7 @@ studentSchema.methods.generateAuthToken = function () {
       userName: this.studentName,
       role: this.role,
       isAdmin: this.isAdmin,
+      gender: this.gender,
     },
     process.env.JWT_TOKEN_SECRET,
     {
