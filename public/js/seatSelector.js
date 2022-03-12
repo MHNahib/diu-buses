@@ -72,3 +72,35 @@ const selectedSeat = (seat) => {
     updateSelection();
   }
 };
+
+// add booked options on seat
+window.addEventListener("load", (event) => {
+  let value = document
+    .getElementById("selectedSeatsId")
+    .value.replace(/\s+/g, " ")
+    .trim();
+  let female = document
+    .getElementById("femaleSeatsId")
+    .value.replace(/\s+/g, " ")
+    .trim();
+
+  const bookedSeats = value.split(",");
+  const femaleSeats = female.split(",");
+
+  // remove seats from men
+  for (let i = 0; i < bookedSeats.length; i++) {
+    index = bookedSeats.indexOf(femaleSeats[i]);
+    if (index > -1) {
+      bookedSeats.splice(index, 1);
+    }
+  }
+
+  // console.log(bookedSeats);
+  // console.log(femaleSeats);
+
+  for (let i = 0; i < bookedSeats.length; i++)
+    document.getElementById(bookedSeats[i].toString()).classList.add("booked");
+
+  for (let i = 0; i < femaleSeats.length; i++)
+    document.getElementById(femaleSeats[i].toString()).classList.add("bookedF");
+});

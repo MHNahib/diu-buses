@@ -273,7 +273,10 @@
                             <input type="hidden" name="seatTow" id="seatTwo">
                             <input type="hidden" name="seatThree" id="seatThree">
                             <input type="hidden" name="seatFour" id="seatFour">
-                            <!-- <input type="hidden" name="scheduleId" id="scheduleId" value="<%= responce._id %>"> -->
+                            <input type="hidden" name="selectedSeats" id="selectedSeatsId"
+                                value="<%= responce[0].bookedSeats %>">
+                            <input type="hidden" name="femaleSeats" id="femaleSeatsId"
+                                value="<%=  responce[0].femaleSeats %>">
                             <input type="submit" value="Continue" class="btn-blue text-center primary-font w-100">
                         </form>
 
