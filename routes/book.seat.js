@@ -27,6 +27,8 @@ router.post("/:id", [auth, booked], async (req, res) => {
     return res.redirect("/search");
   }
 
+  // console.log(req.user.gender);
+
   let selectedSeatNumber = 0;
   const requestSeats = [];
 
@@ -109,6 +111,9 @@ router.post("/:id", [auth, booked], async (req, res) => {
       schedule.availabeSeats = schedule.availabeSeats - selectedSeats.length;
       schedule.bookedBy = ticket._id;
       schedule.bookedSeats.push(...selectedSeats);
+      if (req.user.gender === "Female")
+        schedule.femaleSeats.push(...selectedSeats);
+
       await schedule.save();
 
       // sign booked token
@@ -168,6 +173,7 @@ router.post("/:id", [auth, booked], async (req, res) => {
   schedule.availabeSeats = schedule.availabeSeats - selectedSeats.length;
   schedule.bookedBy = ticket._id;
   schedule.bookedSeats.push(...selectedSeats);
+  if (req.user.gender === "Female") schedule.femaleSeats.push(...selectedSeats);
   await schedule.save();
 
   if (selectedSeats.length > 0) {
