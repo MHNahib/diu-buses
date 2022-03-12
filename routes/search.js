@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   if (error)
     return res
       .status(400)
-      .render("createBus", { error: error.details[0].message });
+      .render("search", { error: error.details[0].message });
 
   // console.log(req.body);
 
@@ -53,7 +53,10 @@ router.post("/", async (req, res) => {
     );
     return res.redirect("/search");
   }
-  res.render("show", { responce: schedule });
+  res.render("show", {
+    responce: schedule,
+    location: { from: req.body.start.trim(), to: req.body.destination.trim() },
+  });
 });
 
 // show search result

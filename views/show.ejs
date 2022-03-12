@@ -39,11 +39,11 @@
                                             <b>Phone: &nbsp;</b>
                                             <%= responce[i].phone %>
                                                 <br>
-                                                <b>Strt Time: &nbsp; <%= responce[i].startTime %></b> <br>
+                                                <b>Start Time: &nbsp; <%= responce[i].startTime %></b> <br>
                                                 <b>Available seat(s): &nbsp; <%= responce[i].availabeSeats %></b> <br>
                                 </p>
-                                <a href="book/<%= responce[i]._id %>" class="btn btn-primary w-100 text-center"> <i
-                                        class="fa fa-bus"></i>
+                                <a href="book-seat/<%= responce[i]._id %>?from=<%= location.from %>&to=<%= location.to %>"
+                                    class="btn btn-primary w-100 text-center"> <i class="fa fa-bus"></i>
                                     &nbsp;&nbsp;&nbsp;Continue</a>
                             </div>
                         </div>

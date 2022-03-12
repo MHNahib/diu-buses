@@ -1,30 +1,25 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
-
+const jwt = require("jsonwebtoken");
 // ticket schema
 const ticketSchema = new mongoose.Schema({
-  studentId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Students",
   },
-  routeId: {
+  scheduleId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Routes",
+    ref: "Schedules",
   },
-  from: {
-    type: String,
-    required: true,
-    maxlength: 255,
-  },
-  to: {
+  routeName: {
     type: String,
     required: true,
     maxlength: 255,
   },
   price: {
     type: Number,
-    required: true,
     min: 1,
     max: 1000,
   },
@@ -34,7 +29,27 @@ const ticketSchema = new mongoose.Schema({
     min: 1,
     max: 4,
   },
+  bookedSeats: {
+    type: [String],
+  },
 });
+
+ticketSchema.methods.generateAuthToken = function () {
+  return jwt.sign(
+    {
+      _id: this._id,
+      userId: this.userId,
+      scheduleId: this.scheduleId,
+      numberOfTicket: this.numberOfTicket,
+      bookedSeats: this.bookedSeats,
+      routeName: this.from,
+    },
+    process.env.JWT_TOKEN_SECRET,
+    {
+      expiresIn: "30m",
+    }
+  );
+};
 
 const Ticket = new mongoose.model("Ticket", ticketSchema);
 
@@ -42,11 +57,11 @@ const Ticket = new mongoose.model("Ticket", ticketSchema);
 const validation = (body) => {
   // joi schema
   const schema = Joi.object({
-    studentId: Joi.objectId().required(),
-    routeId: Joi.objectId().required(),
+    userId: Joi.objectId().required(),
+    scheduleId: Joi.objectId().required(),
     from: Joi.string().max(255).required(),
     to: Joi.string().max(255).required(),
-    price: Joi.number().min(1).max(1000).required(),
+
     numberOfTicket: Joi.number().min(1).max(4).required(),
   });
 

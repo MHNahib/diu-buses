@@ -26,6 +26,7 @@ ul {
   margin-right: 6px;
   margin-top: 9px;
   padding: 0px;
+  cursor: pointer;
 }
 
 .bg-none {
@@ -35,11 +36,22 @@ ul {
 .list-inline > li {
   display: inline-block;
   padding: 20px;
-  background-color: #98c157;
+  background-color: #bcc2b2;
   color: white;
 }
 
-.box{
+.selected {
+  background-color: #98c157 !important;
+}
+
+.booked {
+  background-color: #b31313 !important;
+}
+.bookedF {
+  background-color: #e4246e !important;
+}
+
+.box {
   padding: 10px;
 }
 

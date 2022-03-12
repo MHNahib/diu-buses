@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const asyncError = require("express-async-errors");
 const cookieParser = require("cookie-parser");
 const db = require("./setup/db");
@@ -28,6 +28,7 @@ const dashboardDriver = require("./routes/dashboard/driver");
 const dashboardBus = require("./routes/dashboard/bus");
 const dashboardSchedule = require("./routes/dashboard/schedule");
 const search = require("./routes/search");
+const bookSeat = require("./routes/book.seat");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -55,7 +56,7 @@ app.use(express.static(__dirname + "/public"));
 // initializePassport(passport);
 
 // middleware
-app.use(helmet());
+// app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
 const error = require("./middleware/error");
@@ -76,6 +77,7 @@ app.use("/pricing", pricing);
 app.use("/tickets", tickets);
 app.use("/drivers", drivers);
 app.use("/search", search);
+app.use("/book-seat", bookSeat);
 app.use("/dashboard", dashboard);
 app.use("/dashboard/route", dashboardRoute);
 app.use("/dashboard/drivers", dashboardDriver);
