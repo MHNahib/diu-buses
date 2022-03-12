@@ -6,6 +6,7 @@ const { Student } = require("../models/student");
 const { Employee } = require("../models/employee");
 const { Teacher } = require("../models/teacher");
 const { Ticket } = require("../models/ticket");
+const { RequestNewBus } = require("../models/request.new.bus");
 const auth = require("../middleware/auth");
 const booked = require("../middleware/booking");
 const mongoose = require("mongoose");
@@ -27,7 +28,14 @@ router.post("/:id", [auth, booked], async (req, res) => {
     return res.redirect("/search");
   }
 
-  // console.log(req.user.gender);
+  // console.log(schedule.availabeSeats);
+  if (schedule.availabeSeats <= 10) {
+    const requestNewBus = new RequestNewBus({
+      bookedSchedule: schedule._id,
+      routeName: schedule.routeName,
+    });
+    await requestNewBus.save();
+  }
 
   let selectedSeatNumber = 0;
   const requestSeats = [];
@@ -49,9 +57,9 @@ router.post("/:id", [auth, booked], async (req, res) => {
   if (req.user.role[0] === "Student")
     user = await Student.findById(req.user._id);
   if (req.user.role[0] === "Teacher")
-    user = await Student.findById(req.user._id);
+    user = await Teacher.findById(req.user._id);
   if (req.user.role[0] === "Employee")
-    user = await Student.findById(req.user._id);
+    user = await Employee.findById(req.user._id);
   // console.log(user);
   if (!user) {
     res.clearCookie("jwt");
