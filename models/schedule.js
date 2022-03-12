@@ -65,6 +65,9 @@ const scheduleSchema = new mongoose.Schema({
   bookedSeats: {
     type: [String],
   },
+  FemaleSeats: {
+    type: [String],
+  },
   date: {
     type: Date,
     required: true,
