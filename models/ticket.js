@@ -32,6 +32,11 @@ const ticketSchema = new mongoose.Schema({
   bookedSeats: {
     type: [String],
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
 ticketSchema.methods.generateAuthToken = function () {
