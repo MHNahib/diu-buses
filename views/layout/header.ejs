@@ -37,10 +37,11 @@
                 <div class="col-12 d-block">
                     <ul class="nav me-auto float-end">
                         <li class="nav-item top-conent">
-                            <a class="nav-link active" href="#">Contuct us</a>
+                            <a class="nav-link active" href="mailto:admission@daffodilvarsity.edu.bd">Contuct us</a>
                         </li>
                         <li class="nav-item top-conent">
-                            <a class="nav-link active" href="tel:16222"><i class="fas fa-phone"></i> 16222</a>
+                            <a class="nav-link active" href="tel:01847140037"><i class="fas fa-phone"></i>
+                                &nbsp; 01847140037</a>
                         </li>
                     </ul>
                 </div>
@@ -65,17 +66,17 @@
                     </div>
                     <div class="navbar-nav ms-auto">
                         <a href="/" class="nav-item nav-link primary-color bold">Home</a>
-                        <a href="/" class="nav-item nav-link primary-color bold">Services</a>
+                        <!-- <a href="/" class="nav-item nav-link primary-color bold">Services</a> -->
                         <a href="/about" class="nav-item nav-link primary-color bold">About Us</a>
-                        <a href="/" class="nav-item nav-link primary-color bold">Contuct Us</a>
+                        <!-- <a href="/" class="nav-item nav-link primary-color bold">Contuct Us</a> -->
 
                         <%if(typeof user=='undefined' ){%>
-                            <a href="/auth/student/login" class="nav-item nav-link primary-color bold mx-2">Login</a>
-                            <a href="/auth/student/signup" class="nav-item nav-link primary-color bold mx-2">Signup</a>
+                            <a href="/auth/student/login" class="nav-item nav-link primary-color bold">Login</a>
+                            <a href="/auth/student/signup" class="nav-item nav-link primary-color bold">Signup</a>
 
                             <% } else { %>
-                                <a href="/dashboard" class="nav-item nav-link primary-color bold mx-2">Dashboard</a>
-                                <a href="/logout" class="nav-item nav-link primary-color bold mx-2">Logout</a>
+                                <a href="/dashboard" class="nav-item nav-link primary-color bold">Dashboard</a>
+                                <a href="/logout" class="nav-item nav-link primary-color bold">Logout</a>
                                 <% }%>
 
 
