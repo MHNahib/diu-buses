@@ -112,7 +112,7 @@ router.post("/:id", [auth, booked], async (req, res) => {
     // console.log(`outside of check booking`);
     // update if no booking found
     if (checkUserBooking.length === 0) {
-      console.log(`on check bookign `);
+      // console.log(`on check bookign `);
       const ticket = new Ticket({
         userId: user._id,
         scheduleId: schedule._id,
