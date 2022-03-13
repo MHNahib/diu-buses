@@ -19,12 +19,12 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 router.post("/:id", [auth, booked], async (req, res) => {
-  const { error } = validation(req.body);
+  // const { error } = validation(req.body);
 
-  if (error) {
-    req.flash("error_msg", error.details[0].message);
-    return res.redirect("/search");
-  }
+  // if (error) {
+  //   req.flash("error_msg", error.details[0].message);
+  //   return res.redirect("/search");
+  // }
 
   let schedule = await Schedule.findById(req.params.id);
   if (schedule.length === 0) {
