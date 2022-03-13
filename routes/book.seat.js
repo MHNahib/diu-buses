@@ -19,6 +19,13 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 router.post("/:id", [auth, booked], async (req, res) => {
+  const { error } = validation(req.body);
+
+  if (error) {
+    req.flash("error_msg", error.details[0].message);
+    return res.redirect("/search");
+  }
+
   let schedule = await Schedule.findById(req.params.id);
   if (schedule.length === 0) {
     req.flash(
@@ -125,7 +132,7 @@ router.post("/:id", [auth, booked], async (req, res) => {
       schedule.availabeSeats = schedule.availabeSeats - selectedSeats.length;
       schedule.bookedBy = ticket._id;
       schedule.bookedSeats.push(...selectedSeats);
-      if (req.user.gender === "Female")
+      if (req.user.gender === "female")
         schedule.femaleSeats.push(...selectedSeats);
 
       await schedule.save();
@@ -187,7 +194,7 @@ router.post("/:id", [auth, booked], async (req, res) => {
   schedule.availabeSeats = schedule.availabeSeats - selectedSeats.length;
   schedule.bookedBy = ticket._id;
   schedule.bookedSeats.push(...selectedSeats);
-  if (req.user.gender === "Female") schedule.femaleSeats.push(...selectedSeats);
+  if (req.user.gender === "female") schedule.femaleSeats.push(...selectedSeats);
   await schedule.save();
 
   if (selectedSeats.length > 0) {
@@ -205,4 +212,13 @@ router.post("/:id", [auth, booked], async (req, res) => {
   return res.redirect("/search");
 });
 
+const validation = (body) => {
+  const schema = Joi.object({
+    start: Joi.string().required(),
+    destination: Joi.string().required(),
+    startTime: Joi.string().required(),
+  });
+
+  return schema.validate(body);
+};
 module.exports = router;
