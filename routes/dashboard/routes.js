@@ -4,20 +4,22 @@ const axios = require("axios");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 const { Route, routeValidation } = require("../../models/route");
+const auth = require("../../middleware/auth");
+const restrict = require("../../middleware/restrict");
 const router = express.Router();
 
 // route
-router.get("/", async (req, res) => {
+router.get("/", auth, restrict, async (req, res) => {
   const responce = await axios.get(`${process.env.LOCAL_URL}/route`);
   res.render("route", { responce: responce.data });
 });
 
-router.get("/add", async (req, res) => {
+router.get("/add", auth, restrict, async (req, res) => {
   res.render("createRoute", {});
 });
 
 // add new rote
-router.post("/", async (req, res) => {
+router.post("/", auth, restrict, async (req, res) => {
   // validate request body
   const { error } = validation(req.body);
   if (error)
@@ -46,7 +48,7 @@ router.post("/", async (req, res) => {
   res.redirect("/dashboard/route");
 });
 // router edit view
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, restrict, async (req, res) => {
   const responce = await axios.get(
     `${process.env.LOCAL_URL}/route/${req.params.id}`
   );
@@ -54,7 +56,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // route edit post
-router.post("/:id", async (req, res) => {
+router.post("/:id", auth, restrict, async (req, res) => {
   const { error } = validation(req.body);
 
   if (error)
@@ -94,7 +96,7 @@ const validation = (body) => {
 };
 
 // view delete
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, restrict, async (req, res) => {
   const route = await Route.findByIdAndRemove(req.params.id);
 
   if (!route) return res.status(404).send("Route not found");

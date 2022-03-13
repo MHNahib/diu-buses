@@ -3,18 +3,20 @@ const { Schedule, scheduleValidation } = require("../../models/schedule");
 const { Bus, busValidation } = require("../../models/bus");
 const { Route, routeValidation } = require("../../models/route");
 const { Driver } = require("../../models/dirver");
+const auth = require("../../middleware/auth");
+const restrict = require("../../middleware/restrict");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const schedule = await Schedule.find().sort("startTime");
+router.get("/", auth, restrict, async (req, res) => {
+  const schedule = await Schedule.find().sort("startTime date");
 
   //   console.log(schedule);
   res.render("schedule", { responce: schedule });
 });
 
 // add scadule view
-router.get("/add", async (req, res) => {
+router.get("/add", auth, restrict, async (req, res) => {
   const bus = await Bus.find().select("name").sort("name");
   const route = await Route.find().sort("name");
   const driver = await Driver.find().sort("driverName").select("driverName");
@@ -36,7 +38,7 @@ router.get("/add", async (req, res) => {
 });
 
 // add new schadule
-router.post("/", async (req, res) => {
+router.post("/", auth, restrict, async (req, res) => {
   let bus = await Bus.find().select("name").sort("name");
   let route = await Route.find().sort("name");
   let driver = await Driver.find().sort("driverName").select("driverName");
@@ -98,7 +100,7 @@ router.post("/", async (req, res) => {
 });
 
 // edit schadule
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, restrict, async (req, res) => {
   const schadule = await Schedule.findById(req.params.id);
   if (!schadule) return res.status(404).send(`Schedule not found`);
 
@@ -128,7 +130,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // edit schedule
-router.post("/:id", async (req, res) => {
+router.post("/:id", auth, restrict, async (req, res) => {
   // check bus is valid or not
   const schadule = await Schedule.findById(req.params.id);
   if (!schadule) return res.status(404).send(`Schedule not found`);
@@ -190,7 +192,7 @@ router.post("/:id", async (req, res) => {
 });
 
 // delete schedule
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, restrict, async (req, res) => {
   const schadule = await Schedule.findByIdAndRemove(req.params.id);
 
   if (!schadule) return res.status(404).send("Schedule not found");

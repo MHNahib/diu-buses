@@ -1,23 +1,23 @@
 const express = require("express");
 const { Driver, driverValidation } = require("../../models/dirver");
-// const auth = require("../middleware/auth");
-// const roles = require("../middleware/roles");
+const auth = require("../../middleware/auth");
+const restrict = require("../../middleware/restrict");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", auth, restrict, async (req, res) => {
   const driver = await Driver.find().select("driverName phone");
 
   res.render("driver", { responce: driver });
 });
 
 // add dirver view
-router.get("/add", async (req, res) => {
+router.get("/add", auth, restrict, async (req, res) => {
   res.render("createDriver", {});
 });
 
 // add new driver
-router.post("/", async (req, res) => {
+router.post("/", auth, restrict, async (req, res) => {
   const { error } = driverValidation(req.body);
 
   if (error)
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
 });
 
 // edit driver
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, restrict, async (req, res) => {
   const driver = await Driver.findById(req.params.id);
   if (!driver) return res.status(404).send(`Route not found`);
 
@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // update driver
-router.post("/:id", async (req, res) => {
+router.post("/:id", auth, restrict, async (req, res) => {
   const driver = await Driver.findById(req.params.id);
   if (!driver) return res.status(404).send(`Route not found`);
 
@@ -64,7 +64,7 @@ router.post("/:id", async (req, res) => {
 });
 
 // delete driver
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, restrict, async (req, res) => {
   const driver = await Driver.findByIdAndRemove(req.params.id);
 
   if (!driver) return res.status(404).send("Driver not found");

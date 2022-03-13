@@ -1,22 +1,24 @@
 const express = require("express");
 const { Bus, busValidation } = require("../../models/bus");
+const auth = require("../../middleware/auth");
+const restrict = require("../../middleware/restrict");
 const mongoose = require("mongoose");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", auth, restrict, async (req, res) => {
   const bus = await Bus.find().select("name type seats").sort("name");
 
   res.render("bus", { responce: bus });
 });
 
 // add bus view
-router.get("/add", async (req, res) => {
+router.get("/add", auth, restrict, async (req, res) => {
   res.render("createBus", {});
 });
 
 // add new bus
-router.post("/", async (req, res) => {
+router.post("/", auth, restrict, async (req, res) => {
   // validate request
   // console.log(typeof req.body.seats);
   const { error } = busValidation(req.body);
@@ -47,7 +49,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // edit bus
-router.post("/:id", async (req, res) => {
+router.post("/:id", auth, restrict, async (req, res) => {
   // check bus is valid or not
   const bus = await Bus.findById(req.params.id);
 
@@ -72,7 +74,7 @@ router.post("/:id", async (req, res) => {
 });
 
 // delete bus
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, restrict, async (req, res) => {
   // check bus is valid or not and delete
   const bus = await Bus.findByIdAndRemove(req.params.id);
 
