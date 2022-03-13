@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 // routers path
 const home = require("./routes/home");
 const about = require("./routes/about");
+const logout = require("./routes/logout");
 const student = require("./routes/auth/student");
 const employee = require("./routes/auth/employee");
 const teacher = require("./routes/auth/teacher");
@@ -30,6 +31,7 @@ const dashboardSchedule = require("./routes/dashboard/schedule");
 const search = require("./routes/search");
 const bookSeat = require("./routes/book.seat");
 const requestNewBus = require("./routes/request.new.bus");
+const ticketDetails = require("./routes/dashboard/ticket");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -68,6 +70,7 @@ app.set("view engine", "ejs");
 // routers
 app.use("/", home);
 app.use("/about", about);
+app.use("/logout", logout);
 app.use("/auth/student", student);
 app.use("/auth/employee", employee);
 app.use("/auth/teacher", teacher);
@@ -85,9 +88,14 @@ app.use("/dashboard/drivers", dashboardDriver);
 app.use("/dashboard/bus", dashboardBus);
 app.use("/dashboard/schedule", dashboardSchedule);
 app.use("/dashboard/request", requestNewBus);
+app.use("/dashboard/ticket", ticketDetails);
 
 app.use(error);
 
+// 404 page
+app.get("*", (req, res) => {
+  res.render("404", { title: `404` });
+});
 // port
 const port = process.env.PORT || 3000;
 

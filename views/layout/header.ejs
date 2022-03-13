@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" script-src='unsafe-inline' ;>
 
-    <title>DIU BUSES</title>
+    <title>Daffodil International University | Transport Management System</title>
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
@@ -53,8 +53,8 @@
     <div class="m-1">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand">
-                    <img src="/img/logo.png" height="35" alt="CoolBrand">
+                <a href="/" class="navbar-brand">
+                    <img src="/img/logo.png" height="35" alt="Daffodil international university">
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -64,12 +64,29 @@
 
                     </div>
                     <div class="navbar-nav ms-auto">
-                        <a href="#" class="nav-item nav-link primary-color bold">Home</a>
-                        <a href="#" class="nav-item nav-link primary-color bold">Services</a>
-                        <a href="#" class="nav-item nav-link primary-color bold">About Us</a>
-                        <a href="#" class="nav-item nav-link primary-color bold">Contuct Us</a>
-                        <a href="/login" class="nav-item nav-link primary-color bold mx-2">Login</a>
-                        <a href="/signup" class="nav-item nav-link primary-color bold mx-2">Signup</a>
+                        <a href="/" class="nav-item nav-link primary-color bold">Home</a>
+                        <a href="/" class="nav-item nav-link primary-color bold">Services</a>
+                        <a href="/about" class="nav-item nav-link primary-color bold">About Us</a>
+                        <a href="/" class="nav-item nav-link primary-color bold">Contuct Us</a>
+
+                        <%if(typeof user=='undefined' ){%>
+                            <a href="/auth/student/login" class="nav-item nav-link primary-color bold mx-2">Login</a>
+                            <a href="/auth/student/signup" class="nav-item nav-link primary-color bold mx-2">Signup</a>
+
+                            <% } else { %>
+                                <a href="/dashboard" class="nav-item nav-link primary-color bold mx-2">Dashboard</a>
+                                <% }%>
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

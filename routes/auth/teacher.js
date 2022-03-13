@@ -2,10 +2,12 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const router = express.Router();
-
+const user = require("../../middleware/user");
+const auth = require("../../middleware/auth");
+const redirect = require("../../middleware/redirect");
 const { Teacher, teacherValidation } = require("../../models/teacher");
 
-router.get("/signup", (req, res) => {
+router.get("/signup", user, redirect, (req, res) => {
   // res.render("studentLogin");
   res.render("teacherSignup", { error: undefined });
 });
@@ -49,7 +51,7 @@ router.post("/signup", async (req, res) => {
   res.redirect("/auth/teacher/login");
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", user, redirect, (req, res) => {
   // res.render("studentLogin");
   res.render("teacherLogin", { error: undefined });
 });

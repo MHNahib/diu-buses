@@ -2,10 +2,12 @@ const express = require("express");
 const Joi = require("joi");
 const { Route, routeValidation } = require("../models/route");
 const { Schedule } = require("../models/schedule");
+const user = require("../middleware/user");
+const redirect = require("../middleware/redirect");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", user, async (req, res) => {
   const route = await Route.find().select("busStoppages");
 
   const rowList = [];

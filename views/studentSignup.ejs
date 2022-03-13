@@ -15,7 +15,7 @@
                                     <input type="text" class="form-control" id="studentId" name="studentId"
                                         aria-describedby="studentIdHelp" required>
                                     <div id="studentIdHelp" class="form-text">Enter your vaild student id (example:
-                                        181-15-10894)
+                                        181-15-10894).
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -47,13 +47,21 @@
                                 </div>
 
                                 <!-- <button type="submit" class="btn-green mt-4">Continue</button> -->
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col text-center">
-                                            <input type="submit" class="btn-blue  mt-2" value="Signup">
-                                        </div>
-                                    </div>
+
+                                <div class="mb-3 text-center">
+                                    <input style="border-radius: 0 !important;" type="submit"
+                                        class="btn btn-color w-100  mt-2" value="Signup As Student">
                                 </div>
+
+                                <div class="mb-3 text-center">
+                                    <a style="border-radius: 0 !important;" href="/auth/teacher/signup"
+                                        class="btn btn-outline-success w-100  mt-1">Signup As Teacher</a>
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <a style="border-radius: 0 !important;" href="/auth/employee/signup"
+                                        class="btn btn-outline-danger w-100  mt-1">Signup As Employee</a>
+                                </div>
+
                             </form>
             </div>
 

@@ -3,6 +3,9 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const user = require("../../middleware/user");
+const auth = require("../../middleware/auth");
+const redirect = require("../../middleware/redirect");
 const router = express.Router();
 
 const { Student, studentValidation } = require("../../models/student");
@@ -39,7 +42,7 @@ const { Student, studentValidation } = require("../../models/student");
 //   });
 // });
 
-router.get("/signup", (req, res) => {
+router.get("/signup", user, redirect, (req, res) => {
   // res.render("studentLogin");
   res.render("studentSignup", { error: undefined });
 });
@@ -83,7 +86,7 @@ router.post("/signup", async (req, res) => {
   res.redirect("/auth/student/login");
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", user, redirect, (req, res) => {
   // res.render("studentLogin");
   res.render("studentLogin", { error: undefined });
 });

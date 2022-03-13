@@ -1,5 +1,18 @@
 <%- include("layout/dashboardHeader") %>
 
+    <!-- welcome section  -->
+    <main role="main" class="container m-4">
+        <div class="jumbotron">
+            <h1>Welcome Back, <b style="color: #70b4ee;">
+
+                    <%= user.userName %>
+                </b>
+            </h1>
+            <p class="lead"></p>
+            <a class="btn btn-lg btn-primary" href="/search" role="button"> <i class="fa fa-search"></i> &nbsp; Book a
+                Seat Now!</a>
+        </div>
+    </main>
 
 
     <%- include("layout/dashboardFooter") %>

@@ -87,7 +87,10 @@ body {
 .tomato-bg {
   background-color: #b31313;
 }
-
+.btn-color {
+  background-color: #012e60 !important;
+  color: #fff !important;
+}
 .btn-blue {
   display: inline-block;
   font-weight: 400;

@@ -1,12 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
-// const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 // const roles = require("../middleware/roles");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", auth, (req, res) => {
+  // console.log(req.user);
   res.render("dashboard", {});
 });
 
