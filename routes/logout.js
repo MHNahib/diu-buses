@@ -4,7 +4,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.clearCookie("jwt");
   res.clearCookie("booked");
-  req.flash("error_msg", "Acess denied. Please login.");
+  req.flash("success_msg", "Successfully logout.");
   res.redirect("/auth/student/login");
 });
 
