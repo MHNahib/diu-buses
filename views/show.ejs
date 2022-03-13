@@ -27,8 +27,16 @@
                             <img src="img/Buss.png" class="card-img-top w-80" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">
+                                    <b>Route:</b>
                                     <%= responce[i].routeName %>
                                 </h5>
+                                <h6 class="card-title">
+                                    <b>
+                                        <%= location.from %>
+                                    </b> To <b>
+                                        <%= location.to %>
+                                    </b>
+                                </h6>
                                 <p class="card-text"><b>Bus Stoppages: &nbsp;</b>
                                     <br>
                                     <%= responce[i].busStoppages %>

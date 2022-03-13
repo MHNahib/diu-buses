@@ -95,53 +95,57 @@
                                                 <tbody>
                                                     <% if (user.isAdmin) { %>
                                                         <% for(var i=0; i < requestNewBus.length; i++) { %>
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    <%= i + 1 %>
-                                                                </th>
-                                                                <th scope="row">
-                                                                    <%= requestNewBus[i].routeName %>
-                                                                </th>
-                                                                <% if (requestNewBus[i].status) { %>
-                                                                    <td
-                                                                        class="text-capitalize text-denger text-success">
-                                                                        <% } else{ %>
-                                                                    <td class="text-capitalize text-denger text-danger">
-                                                                        <% } %>
-                                                                            <b>
-                                                                                <%= requestNewBus[i].status %>
-                                                                            </b>
-                                                                    </td>
-
-                                                            </tr>
-                                                            <% } %>
-                                                                <% } else{ %>
-
-                                                                    <% for(var i=0; i < schedule.length; i++) { %>
-                                                                        <tr>
-                                                                            <th scope="row">
-                                                                                <%= i + 1 %>
-                                                                            </th>
-                                                                            <td>
-                                                                                <%= schedule[i].routeName %>
-                                                                            </td>
-                                                                            <td>
-                                                                                <%= schedule[i].busName %>
-                                                                            </td>
-                                                                            <td>
-                                                                                <%= schedule[i].availabeSeats %>
-                                                                            </td>
-                                                                            <td>
-                                                                                <%= schedule[i].startTime %>
-                                                                            </td>
-                                                                            <td>
-                                                                                <%= schedule[i].date.toISOString().slice(0,
-                                                                                    10) %>
-                                                                            </td>
-
-                                                                        </tr>
-                                                                        <% } %>
+                                                            <% if (!requestNewBus[i].status) { %>
+                                                                <tr>
+                                                                    <th scope="row">
+                                                                        <%= i + 1 %>
+                                                                    </th>
+                                                                    <th scope="row">
+                                                                        <%= requestNewBus[i].routeName %>
+                                                                    </th>
+                                                                    <% if (requestNewBus[i].status) { %>
+                                                                        <td
+                                                                            class="text-capitalize text-denger text-success">
+                                                                            <% } else{ %>
+                                                                        <td
+                                                                            class="text-capitalize text-denger text-danger">
                                                                             <% } %>
+                                                                                <b>
+                                                                                    <%= requestNewBus[i].status %>
+                                                                                </b>
+                                                                        </td>
+
+                                                                </tr>
+                                                                <% } %>
+                                                                    <% } %>
+                                                                        <% } else{ %>
+
+                                                                            <% for(var i=0; i < schedule.length; i++) {
+                                                                                %>
+                                                                                <tr>
+                                                                                    <th scope="row">
+                                                                                        <%= i + 1 %>
+                                                                                    </th>
+                                                                                    <td>
+                                                                                        <%= schedule[i].routeName %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= schedule[i].busName %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= schedule[i].availabeSeats %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= schedule[i].startTime %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= schedule[i].date.toISOString().slice(0,
+                                                                                            10) %>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <% } %>
+                                                                                    <% } %>
 
                                                 </tbody>
                                             </table>
@@ -156,9 +160,13 @@
                 </div>
             </div>
         </div>
+        <% if (user.isAdmin) { %>
+            <hr class="w-100 mt-4" style="height: 2px; background-color: #70b4ee;">
+            <% } %>
     </div>
 
     <% if (user.isAdmin) { %>
+
         <div class="container">
             <div class="mt-4">
                 <div class="row">
