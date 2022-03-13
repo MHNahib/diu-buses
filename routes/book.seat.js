@@ -58,7 +58,11 @@ router.post("/:id", [auth, booked], async (req, res) => {
   if (req.body.seatTwo) requestSeats.push(req.body.seatTwo.trim());
   if (req.body.seatThree) requestSeats.push(req.body.seatThree.trim());
   if (req.body.seatFour) requestSeats.push(req.body.seatFour.trim());
-
+  // console.log(req.body.seatOne);
+  // console.log(req.body.seatTwo);
+  // console.log(req.body.seatThree);
+  // console.log(req.body.seatFour);
+  // console.log(requestSeats);
   // removed empty string
   const selectedSeats = requestSeats.filter((element) => {
     return element !== "";
@@ -115,6 +119,7 @@ router.post("/:id", [auth, booked], async (req, res) => {
         selectedSeats.splice(index, 1);
       }
     }
+    // console.log(selectedSeats);
 
     // console.log(`outside of check booking`);
     // update if no booking found
@@ -183,6 +188,8 @@ router.post("/:id", [auth, booked], async (req, res) => {
       selectedSeats.splice(index, 1);
     }
   }
+  // console.log(2);
+  // console.log(selectedSeats);
 
   // update booking and all
   ticket = await Ticket.findById(checkUserBooking[0]._id);
