@@ -34,7 +34,7 @@ router.get("/add", auth, restrict, async (req, res) => {
 
   const location = [...new Set(rowList)];
 
-  res.render("createschedule", { bus, route, driver, location });
+  res.render("createSchedule", { bus, route, driver, location });
 });
 
 // add new schadule
