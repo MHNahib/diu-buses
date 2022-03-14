@@ -10,8 +10,12 @@ const router = express.Router();
 
 // route
 router.get("/", auth, restrict, async (req, res) => {
-  const responce = await axios.get(`${process.env.LOCAL_URL}/route`);
-  res.render("route", { responce: responce.data });
+  const route = await Route.find()
+    .sort("name")
+    .select("_id routeNo busStoppages routeName");
+
+  // const responce = await axios.get(`${process.env.LOCAL_URL}/route`);
+  res.render("route", { responce: route });
 });
 
 router.get("/add", auth, restrict, async (req, res) => {
