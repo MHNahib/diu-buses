@@ -1,0 +1,40 @@
+<%- include("layout/header") %>
+
+    <div class="container features-type mb-4">
+        <div class="row align-items-center m-3">
+
+            <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
+                <h2 class="primary-color bold">Reset Password</h2>
+                <h5 class="primary-font mt-4 mb-4">Please input your email address to continune</h5>
+
+                <%- include('./partials/messages') %>
+
+                    <form action="/reset-password" method="POST">
+                        <div class="mb-3">
+                            <label for="emailId" class="form-label primary-font">Email</label>
+                            <input type="text" class="form-control" id="emailId" name="email"
+                                aria-describedby="emailIdHelp">
+                            <div id="emailIdHelp" class="form-text">Enter your vaild email.
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <input style="border-radius: 0 !important;" type="submit" class="btn btn-color w-100  mt-2"
+                                value="Send Reset Link">
+                        </div>
+
+
+                    </form>
+            </div>
+
+            <div class="col-lg-5 d-none d-lg-block ">
+                <div class="card border-0 ">
+                    <img src="/img/login.png" width="80%" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <%- include("layout/footer") %>

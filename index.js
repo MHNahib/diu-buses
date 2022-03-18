@@ -32,6 +32,7 @@ const search = require("./routes/search");
 const bookSeat = require("./routes/book.seat");
 const requestNewBus = require("./routes/request.new.bus");
 const ticketDetails = require("./routes/dashboard/ticket");
+const resetPassword = require("./routes/reset.password");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -82,6 +83,7 @@ app.use("/tickets", tickets);
 app.use("/drivers", drivers);
 app.use("/search", search);
 app.use("/book-seat", bookSeat);
+app.use("/reset-password", resetPassword);
 app.use("/dashboard", dashboard);
 app.use("/dashboard/route", dashboardRoute);
 app.use("/dashboard/drivers", dashboardDriver);
