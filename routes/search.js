@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", user, async (req, res) => {
   const route = await Route.find();
-  console.log(route);
+  // console.log(route);
 
   const rowList = [];
   // let location = [];
