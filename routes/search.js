@@ -8,21 +8,22 @@ const mongoose = require("mongoose");
 const router = express.Router();
 
 router.get("/", user, async (req, res) => {
-  const route = await Route.find().select("busStoppages");
+  const route = await Route.find();
+  console.log(route);
 
   const rowList = [];
   // let location = [];
 
   // store location
-  for (let i = 0; i < route.length; i++) {
-    for (let j = 0; j < route[i].busStoppages.length; j++) {
-      rowList.push(route[i].busStoppages[j]);
-    }
-  }
+  // for (let i = 0; i < route.length; i++) {
+  //   for (let j = 0; j < route[i].busStoppages.length; j++) {
+  //     rowList.push(route[i].busStoppages[j]);
+  //   }
+  // }
 
-  const location = [...new Set(rowList)];
+  // const location = [...new Set(rowList)];
 
-  res.render("search", { responce: location });
+  res.render("search", { responce: route });
 });
 
 // search schedule

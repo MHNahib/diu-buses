@@ -25,22 +25,35 @@
 
                 <%- include('./partials/messages') %>
 
-                    <form action="/search" method="post">
+                    <div class="mb-3">
+                        <label for="from-options" class="form-label primary-font bold primary-color ">Route
+                            No.</label>
+                        <select name="routeNo" id="routeNoId" onchange="populate(this.id)" class="form-control"
+                            required>
+                            <option value="">-- Choose Route No --</option>
+                            <% for(var i=0; i < responce.length; i++) { %>
+                                <option value="<%= responce[i].routeNo %>">
+                                    <%= responce[i].routeNo %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <form autocomplete="off" action="/search" method="post">
+
                         <div class="mb-3">
                             <label for="from-options" class="form-label primary-font bold primary-color ">From</label>
                             <input class="form-control" list="datalistOptions" name="start" id="from-options"
-                                placeholder="Type Location" required>
+                                placeholder="Type Location" onchange="destication(this.id)" required>
                         </div>
                         <div class="mb-3">
                             <label for="to-options" class="to-label primary-font bold primary-color ">To</label>
-                            <input class="form-control" list="datalistOptions" name="destination" id="to-options"
+                            <input class="form-control" list="datalistOptionsTo" name="destination" id="to-options"
                                 placeholder="Type Location" required>
                         </div>
                         <!-- location list  -->
                         <datalist id="datalistOptions">
-                            <% for(var i=0; i < responce.length; i++) { %>
-                                <option value=" <%= responce[i] %>">
-                                    <% } %>
+                        </datalist>
+                        <datalist id="datalistOptionsTo">
                         </datalist>
 
 
@@ -177,9 +190,69 @@
 
 
     </div>
-
+    <p class="d-none" id="data">
+        <%=JSON.stringify(responce)%>
+    </p>
 
     </div>
+
+    <script>
+
+        let value = JSON.parse(document.getElementById("data").innerText);
+        // console.log(value);
+        let dataListFrom;
+        let dataListTo;
+
+
+        const populate = (id) => {
+            let routeNo = document.getElementById(id).value;
+            // console.log(routeNo)
+            // console.log(value.length);
+            dataListFrom = null;
+            document.getElementById("from-options").value = null
+            document.getElementById("to-options").value = null
+            for (let i = 0; i < value.length; i++) {
+                if (routeNo === value[i].routeNo) {
+                    dataListFrom = value[i].busStoppages;
+                    // console.log(dataListFrom);
+                    break;
+                }
+            }
+
+            const list = document.getElementById('datalistOptions');
+            list.innerHTML = "";
+
+            dataListFrom.forEach(function (item) {
+                var option = document.createElement('option');
+                option.value = item;
+                list.appendChild(option);
+            });
+
+        }
+
+        const destication = (id) => {
+            const destication = document.getElementById(id).value;
+            dataListTo = dataListFrom;
+            // console.log(dataListTo.length);
+            const index = dataListTo.indexOf(destication);
+            if (index > -1) {
+                dataListTo.splice(index, 1); // 2nd parameter means remove one item only
+            }
+
+
+            // console.log(dataListTo.length);
+            const list = document.getElementById('datalistOptionsTo');
+            list.innerHTML = "";
+
+            dataListTo.forEach(function (item) {
+                var option = document.createElement('option');
+                option.value = item;
+                list.appendChild(option);
+            });
+
+        }
+
+    </script>
 
 
     <%- include("layout/footer") %>
