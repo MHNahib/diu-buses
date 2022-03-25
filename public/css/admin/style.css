@@ -10,8 +10,12 @@
   transition: 0.1s;
   background-color: aqua;
 } */
+.navbar {
+  padding-top: 1.2rem !important;
+}
+
 .navbar-brand {
-  color: #70b4ee !important;
+  color: #ffffff !important;
 }
 
 .nav-menu-item {

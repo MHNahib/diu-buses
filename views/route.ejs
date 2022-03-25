@@ -1,71 +1,72 @@
 <%- include("layout/dashboardHeader") %>
-
-    <div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h2>Route <b>Details</b></h2>
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="/dashboard/route/add" type="button" class="btn btn-info add-new"><i
-                                class="fa fa-plus"></i> Add New</a>
+    <div class="container m-4">
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h2>Route <b>Details</b></h2>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="/dashboard/route/add" type="button" class="btn btn-info add-new"><i
+                                    class="fa fa-plus"></i> Add New</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- table  -->
+                <!-- table  -->
 
-            <div class="mt-4">
-                <div class="row">
-                    <div class="col-12">
-                        <%- include('./partials/messages') %>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th style="width: 5%" scope="col">#</th>
-                                        <th style="width: 10%" scope="col">Route No</th>
-                                        <th style="width: 15%" scope="col">Route Name</th>
-                                        <th tyle="width: 50%" scope="col">Stopages</th>
-                                        <th style="width: 20%" scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for(var i=0; i < responce.length; i++) { %>
-                                        <tr>
-                                            <th scope="row">
-                                                <%= i + 1 %>
-                                            </th>
-                                            <td>
-                                                <%= responce[i].routeNo %>
-                                            </td>
-                                            <td>
-                                                <%= responce[i].routeName %>
-                                            </td>
-                                            <td>
-                                                <%= responce[i].busStoppages %>
-                                            </td>
-                                            <td class="text-center">
-
-                                                <a href="/dashboard/route/<%= responce[i]._id %>" type="button"
-                                                    class="btn btn-success d-inline"><i class="fas fa-edit"></i></a>
-
-                                                <form class="d-inline"
-                                                    action="/dashboard/route/<%= responce[i]._id %>?_method=DELETE"
-                                                    method="post">
-                                                    <button type="submit" class="btn btn-danger"><i
-                                                            class="far fa-trash-alt"></i></button>
-                                                </form>
-
-                                            </td>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <%- include('./partials/messages') %>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th style="width: 5%" scope="col">#</th>
+                                            <th style="width: 10%" scope="col">Route No</th>
+                                            <th style="width: 15%" scope="col">Route Name</th>
+                                            <th tyle="width: 50%" scope="col">Stopages</th>
+                                            <th style="width: 20%" scope="col">Actions</th>
                                         </tr>
-                                        <% } %>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <% for(var i=0; i < responce.length; i++) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= i + 1 %>
+                                                </th>
+                                                <td>
+                                                    <%= responce[i].routeNo %>
+                                                </td>
+                                                <td>
+                                                    <%= responce[i].routeName %>
+                                                </td>
+                                                <td>
+                                                    <%= responce[i].busStoppages %>
+                                                </td>
+                                                <td class="text-center">
+
+                                                    <a href="/dashboard/route/<%= responce[i]._id %>" type="button"
+                                                        class="btn btn-success d-inline"><i class="fas fa-edit"></i></a>
+
+                                                    <form class="d-inline"
+                                                        action="/dashboard/route/<%= responce[i]._id %>?_method=DELETE"
+                                                        method="post">
+                                                        <button type="submit" class="btn btn-danger"><i
+                                                                class="far fa-trash-alt"></i></button>
+                                                    </form>
+
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
 

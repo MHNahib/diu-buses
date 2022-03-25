@@ -1,22 +1,24 @@
 <%- include("layout/dashboardHeader") %>
-    <div class="container">
+    <div class="container m-4">
+        <div class="container">
 
-        <%- include('./partials/messages') %>
+            <%- include('./partials/messages') %>
 
-            <form method="post" action="/dashboard/drivers/<%= responce._id %>">
-                <div class="mb-3">
-                    <label for="driverNameId" class="form-label">Route Name</label>
-                    <input type="text" class="form-control" id="driverNameId" name="driverName"
-                        value="<%= responce.driverName %>">
-                </div>
-                <div class="mb-3">
-                    <label for="phoneId" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="phoneId" name="phone" value="<%= responce.phone %>">
-                </div>
+                <form method="post" action="/dashboard/drivers/<%= responce._id %>">
+                    <div class="mb-3">
+                        <label for="driverNameId" class="form-label">Route Name</label>
+                        <input type="text" class="form-control" id="driverNameId" name="driverName"
+                            value="<%= responce.driverName %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneId" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phoneId" name="phone" value="<%= responce.phone %>">
+                    </div>
 
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
+        </div>
     </div>
     <%- include("layout/dashboardFooter") %>

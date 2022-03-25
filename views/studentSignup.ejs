@@ -1,73 +1,83 @@
 <%- include("layout/header") %>
+    <div class="container-fluid" style="background: rgb(0,77,124);
+background: linear-gradient(90deg, rgb(11,5,15) 0%,rgb(64,44,72)  35%,  rgb(51,30,63) 100%);">
+        <div class="container features-type ">
+            <div class="row align-items-center pb-4">
 
-    <div class="container features-type mb-4">
-        <div class="row align-items-center m-3">
-
-            <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
-                <h2 class="primary-color bold">Welcome</h2>
-                <h5 class="primary-font mt-4 mb-4">Sign up to continue </h5>
-                <% if (error) { %>
-                    <%- include('./partials/messages') %>
-                        <% } %>
-                            <form action="/auth/student/signup" method="POST">
-                                <div class="mb-3">
-                                    <label for="studentId" class="form-label primary-font">Student Id</label>
-                                    <input type="text" class="form-control" id="studentId" name="studentId"
-                                        aria-describedby="studentIdHelp" required>
-                                    <div id="studentIdHelp" class="form-text">Enter your vaild student id (example:
-                                        181-15-10894).
+                <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
+                    <h2 class="text-white bold text-center bold"
+                        style="font-family: 'Lobster', cursive; font-size: 2.9rem;">Welcome
+                    </h2>
+                    <h5 class="primary-font text-center text-white mt-4 mb-4">Sign up to continue </h5>
+                    <% if (error) { %>
+                        <%- include('./partials/messages') %>
+                            <% } %>
+                                <form action="/auth/student/signup" method="POST">
+                                    <div class="mb-3">
+                                        <label for="studentId" class="form-label text-white primary-font">Student
+                                            Id</label>
+                                        <input type="text" class="form-control" id="studentId" name="studentId"
+                                            aria-describedby="studentIdHelp" required>
+                                        <div id="studentIdHelp" style="color: #91989e !important" class="form-text">
+                                            Enter your vaild student id (example:
+                                            xxx-xx-xxxxx).
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="studentName" class="form-label primary-font">Name</label>
-                                    <input type="text" class="form-control" id="studentName" name="studentName"
-                                        aria-describedby="studentNameHelp" required>
-                                    <div id="studentNameHelp" class="form-text">Enter your vaild name.
+                                    <div class="mb-3">
+                                        <label for="studentName" class="form-label text-white primary-font">Name</label>
+                                        <input type="text" class="form-control" id="studentName" name="studentName"
+                                            aria-describedby="studentNameHelp" required>
+                                        <div id="studentNameHelp" style="color: #91989e !important" class="form-text">
+                                            Enter your vaild name.
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="emailId" class="form-label primary-font">Email</label>
-                                    <input type="email" class="form-control" id="emailId" name="email"
-                                        aria-describedby="emailHelp" required>
-                                    <div id="emailHelp" class="form-text">Enter your valid email address
-                                        something@diu.edu.bd
+                                    <div class="mb-3">
+                                        <label for="emailId" class="form-label text-white primary-font">Email</label>
+                                        <input type="email" class="form-control" id="emailId" name="email"
+                                            aria-describedby="emailHelp" required>
+                                        <div id="emailHelp" style="color: #91989e !important" class="form-text">Enter
+                                            your valid email address
+                                            something@diu.edu.bd
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="passsword" class="form-label primary-font">Password</label>
-                                    <input type="password" name="password" class="form-control" id="passsword" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="gender" class="form-label primary-font">Gender</label>
-                                    <select name="gender" class="form-control" required>
+                                    <div class="mb-3">
+                                        <label for="passsword"
+                                            class="form-label text-white primary-font">Password</label>
+                                        <input type="password" name="password" class="form-control" id="passsword"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label text-white primary-font">Gender</label>
+                                        <select name="gender" class="form-control" required>
 
-                                        <option value="male" selected>Male</option>
-                                        <option value="female">Femal</option>
-                                    </select>
-                                </div>
+                                            <option value="male" selected>Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
 
-                                <!-- <button type="submit" class="btn-green mt-4">Continue</button> -->
+                                    <!-- <button type="submit" class="btn-green mt-4">Continue</button> -->
 
-                                <div class="mb-3 text-center">
-                                    <input style="border-radius: 0 !important;" type="submit"
-                                        class="btn btn-color w-100  mt-2" value="Signup As Student">
-                                </div>
+                                    <div class="mb-3 text-center">
+                                        <input style="border-radius: 0 !important;" type="submit"
+                                            class="btn btn-color w-100 text-white  mt-2" value="Signup As Student">
+                                    </div>
 
-                                <div class="mb-3 text-center">
-                                    <a style="border-radius: 0 !important;" href="/auth/teacher/signup"
-                                        class="btn btn-outline-success w-100  mt-1">Signup As Teacher</a>
-                                </div>
-                                <div class="mb-3 text-center">
-                                    <a style="border-radius: 0 !important;" href="/auth/employee/signup"
-                                        class="btn btn-outline-danger w-100  mt-1">Signup As Employee</a>
-                                </div>
+                                    <div class="mb-3 text-center">
+                                        <a style="border-radius: 0 !important;" href="/auth/teacher/signup"
+                                            class="btn btn-outline-success w-100 text-white mt-1">Signup As Teacher</a>
+                                    </div>
+                                    <div class="mb-3 text-center">
+                                        <a style="border-radius: 0 !important;" href="/auth/employee/signup"
+                                            class="btn btn-outline-danger w-100 text-white  mt-1">Signup As Employee</a>
+                                    </div>
 
-                            </form>
-            </div>
+                                </form>
+                </div>
 
-            <div class="col-lg-5 d-none d-lg-block ">
-                <div class="card border-0 ">
-                    <img src="/img/login.png" width="80%" class="img-fluid">
+                <div class="col-lg-5 d-none d-lg-block ">
+                    <div class="card border-0 ">
+                        <img src="/img/login.png" class="img-fluid">
+                    </div>
                 </div>
             </div>
         </div>

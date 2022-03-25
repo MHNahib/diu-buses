@@ -1,53 +1,59 @@
 <%- include("layout/header") %>
+    <div class="container-fluid" style="background: rgb(0,77,124);
+    background: linear-gradient(90deg, rgba(0,77,124,1) 0%, rgba(8,14,51,1) 35%, rgba(73,19,56,1) 100%);">
 
-    <div class="container features-type mb-4">
-        <div class="row align-items-center m-3">
+        <div class="container features-type">
+            <div class="row align-items-center me-3 ms-3 mt-0 pb-3">
 
-            <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
-                <h2 class="primary-color bold">Welcome back</h2>
-                <h5 class="primary-font mt-4 mb-4">Sign in to continue </h5>
+                <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
+                    <h2 class="primary-color bold text-center text-white"
+                        style="font-family: 'Lobster', cursive; font-size: 2.9rem;">Welcome Back</h2>
+                    <h5 class="primary-font text-center text-white mt-4 mb-4 ">Sign in to continue </h5>
 
-                <%- include('./partials/messages') %>
+                    <%- include('./partials/messages') %>
 
-                    <form action="/auth/student/login" method="POST">
-                        <div class="mb-3">
-                            <label for="studentId" class="form-label primary-font">Student Id</label>
-                            <input type="text" class="form-control" id="studentId" name="studentId"
-                                aria-describedby="studentIdHelp">
-                            <div id="studentIdHelp" class="form-text">Enter your vaild student id (example:
-                                181-15-10894).
+                        <form action="/auth/student/login" method="POST">
+                            <div class="mb-3">
+                                <label for="studentId" class="form-label primary-font text-white">Student Id</label>
+                                <input type="text" class="form-control" id="studentId" name="studentId"
+                                    aria-describedby="studentIdHelp">
+                                <div id="studentIdHelp" class="form-text" style="color: #91989e !important">Enter your
+                                    vaild student id (example:
+                                    xxx-xx-xxxxx).
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label primary-font">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
-                        </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label primary-font text-white">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
 
-                        <!-- <button type="submit" class="btn-green mt-4">Continue</button> -->
+                            <!-- <button type="submit" class="btn-green mt-4">Continue</button> -->
 
-                        <div class="mb-3 text-center">
-                            <input style="border-radius: 0 !important;" type="submit" class="btn btn-color w-100  mt-2"
-                                value="Login As Student">
-                        </div>
-                        <div class="mb-3 text-center">
-                            <a style="border-radius: 0 !important;" href="/auth/teacher/login"
-                                class="btn btn-outline-success w-100  mt-1">Login As Teacher</a>
-                        </div>
-                        <div class="mb-3 text-center">
-                            <a style="border-radius: 0 !important;" href="/auth/employee/login"
-                                class="btn btn-outline-danger w-100  mt-1">Login As Employee</a>
-                        </div>
+                            <div class="mb-3 text-center">
+                                <input style="border-radius: 0 !important;" type="submit"
+                                    class="btn btn-color w-100  mt-2" value="Login As Student">
+                            </div>
+                            <div class="mb-3 text-center">
+                                <a style="border-radius: 0 !important;" href="/auth/teacher/login"
+                                    class="btn btn-outline-success w-100 text-white mt-1">Login As Teacher</a>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <a style="border-radius: 0 !important;" href="/auth/employee/login"
+                                    class="btn btn-outline-danger w-100 text-white  mt-1">Login As Employee</a>
+                            </div>
 
-                        <div class="mb-3 text-center">
-                            <a style="border-radius: 0 !important;" href="/reset-password"
-                                class="btn btn-outline-primary w-100  mt-1">Reset Password</a>
-                        </div>
-                    </form>
-            </div>
+                            <div class="mb-3 text-center">
+                                <a style="border-radius: 0 !important;" href="/reset-password"
+                                    class="btn btn-outline-primary w-100 text-white  mt-1">Reset Password</a>
+                            </div>
+                        </form>
 
-            <div class="col-lg-5 d-none d-lg-block ">
-                <div class="card border-0 ">
-                    <img src="/img/login.png" width="80%" class="img-fluid">
+                </div>
+
+                <div class="col-lg-5 d-none d-lg-block ">
+                    <div class="card border-0 ">
+                        <img style="background: transparent;" src="/img/login2.jpeg" class="img-fluid">
+                    </div>
                 </div>
             </div>
         </div>

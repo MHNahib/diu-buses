@@ -1,28 +1,30 @@
 <%- include("layout/dashboardHeader") %>
-    <div class="container">
+    <div class="container m-4">
+        <div class="container">
 
-        <%- include('./partials/messages') %>
+            <%- include('./partials/messages') %>
 
-            <form method="post" action="/dashboard/route/<%= responce._id %>">
-                <div class="mb-3">
-                    <label for="routeNoId" class="form-label">Route Name</label>
-                    <input type="text" class="form-control" id="routeNoId" name="routeNo"
-                        value="<%= responce.routeNo %>">
-                </div>
-                <div class="mb-3">
-                    <label for="routeNameId" class="form-label">Route Name</label>
-                    <input type="text" class="form-control" id="routeNameId" name="routeName"
-                        value="<%= responce.routeName %>">
-                </div>
-                <div class="mb-3">
-                    <label for="busStoppagesId">Bus Stoppage(s)</label>
-                    <textarea class="form-control" id="busStoppagesId" name="busStoppages" rows="3"
-                        aria-describedby="help"><%= responce.busStoppages.join(',') %></textarea>
-                    <div id="help" class="form-text">Please input bus stoppage(s) name separated by commas</div>
-                </div>
+                <form method="post" action="/dashboard/route/<%= responce._id %>">
+                    <div class="mb-3">
+                        <label for="routeNoId" class="form-label">Route No</label>
+                        <input type="text" class="form-control" id="routeNoId" name="routeNo"
+                            value="<%= responce.routeNo %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="routeNameId" class="form-label">Route Name</label>
+                        <input type="text" class="form-control" id="routeNameId" name="routeName"
+                            value="<%= responce.routeName %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="busStoppagesId">Bus Stoppage(s)</label>
+                        <textarea class="form-control" id="busStoppagesId" name="busStoppages" rows="3"
+                            aria-describedby="help"><%= responce.busStoppages.join(',') %></textarea>
+                        <div id="help" class="form-text">Please input bus stoppage(s) name separated by commas</div>
+                    </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
+        </div>
     </div>
     <%- include("layout/dashboardFooter") %>

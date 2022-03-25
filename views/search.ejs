@@ -13,40 +13,56 @@
         <h1 class="primary-color bold">Book Bus Ticket</h1>
     </div>
 
-    <div class="container mb-4">
-        <%- include('./partials/messages') %>
-            <form action="/search" method="post">
-                <div class="mb-3">
-                    <label for="from-options" class="form-label primary-font bold primary-color ">From</label>
-                    <input class="form-control" list="datalistOptions" name="start" id="from-options"
-                        placeholder="Type Location" required>
+    <div class="container features-type">
+        <div class="row align-items-center me-4 ms-4 mb-4">
+            <div class="col-lg-5 col-md-12  ">
+                <div class="card border-0 ">
+                    <img src="/img/bus-booking.png" class="img-fluid">
                 </div>
-                <div class="mb-3">
-                    <label for="to-options" class="to-label primary-font bold primary-color ">To</label>
-                    <input class="form-control" list="datalistOptions" name="destination" id="to-options"
-                        placeholder="Type Location" required>
-                </div>
-                <!-- location list  -->
-                <datalist id="datalistOptions">
-                    <% for(var i=0; i < responce.length; i++) { %>
-                        <option value=" <%= responce[i] %>">
-                            <% } %>
-                </datalist>
+            </div>
+
+            <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
+
+                <%- include('./partials/messages') %>
+
+                    <form action="/search" method="post">
+                        <div class="mb-3">
+                            <label for="from-options" class="form-label primary-font bold primary-color ">From</label>
+                            <input class="form-control" list="datalistOptions" name="start" id="from-options"
+                                placeholder="Type Location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="to-options" class="to-label primary-font bold primary-color ">To</label>
+                            <input class="form-control" list="datalistOptions" name="destination" id="to-options"
+                                placeholder="Type Location" required>
+                        </div>
+                        <!-- location list  -->
+                        <datalist id="datalistOptions">
+                            <% for(var i=0; i < responce.length; i++) { %>
+                                <option value=" <%= responce[i] %>">
+                                    <% } %>
+                        </datalist>
 
 
-                <!-- time picker  -->
-                <div class="mb-3">
-                    <label for="timepicker" class="to-label primary-font bold primary-color ">Time</label>
-                    <input type="time" id="timepicker" name="startTime" class="form-control timepicker" required>
+                        <!-- time picker  -->
+                        <div class="mb-3">
+                            <label for="timepicker" class="to-label primary-font bold primary-color ">Time</label>
+                            <input type="time" id="timepicker" name="startTime" class="form-control timepicker"
+                                required>
 
-                </div>
-                <div class="mb-3 text-center">
-                    <input type="submit" style="border-radius: 0 !important;" class="btn btn-color w-100  mt-2"
-                        value="Search Buses">
-                </div>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <input type="submit" style="border-radius: 0 !important;" class="btn btn-color w-100  mt-2"
+                                value="Search Buses">
+                        </div>
 
-            </form>
+                    </form>
 
+
+            </div>
+
+
+        </div>
     </div>
 
 
@@ -54,21 +70,35 @@
 
 
 
+
+
+
+
     <!-- some facts -->
-    <div class="container-fluid p-4 gray-bg mt-4">
-        <div class="content text-center mt-4">
-            <h1 class="primary-color bold">Some Facts</h1>
-        </div>
-
-        <div class="container mt-4 me-4 ms-4 d-flex justify-content-center align-items-center pt-2 pb-2">
-
+    <div class="container d-flex justify-content-center align-items-center pt-4 pb-4">
+        <div class="container">
+            <div class="row pt32 pb32">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="border-left border-primary px-3">
+                        <h2 class="font-weight-bold text-black text_format">
+                            <font style="color: rgb(66, 66, 66);">Our</font>
+                            &nbsp;
+                            <b><span class="font-weight-normal text-primary"><b>Resources</b></span>
+                                &nbsp;
+                            </b>
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="font-weight-normal text-primary" style="font-size: 18px;"></span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12  col-sm-12-6 col-md-6 col-lg-3 single-count pb32">
                     <div class="d-flex">
                         <div class="p-3">
                             <span class="fa fa-4x fa-bus mr-4" data-original-title="" title=""
                                 aria-describedby="tooltip150450"
-                                style="color: rgb(66, 66, 66); font-size: 48px;"></span>
+                                style="color: rgb(66, 66, 66); font-size: 35px;"></span>
                         </div>
                         <div>
                             <h2 class="text-primary font-weight-bold">
@@ -85,14 +115,16 @@
                         <div class="p-3">
                             <span class="fa fa-4x fa-user mr-4" data-original-title="" title=""
                                 aria-describedby="tooltip805530"
-                                style="color: rgb(66, 66, 66); font-size: 48px;"></span>
+                                style="color: rgb(66, 66, 66); font-size: 35px;"></span>
                         </div>
                         <div>
                             <h2 class="text-primary font-weight-bold">
                                 <span class="counter" data-target="100" style="font-size: 48px;">100</span>
                             </h2>
                             <span class="font-weight-bold">
-                                <font style="color: rgb(66, 66, 66); font-size: 18px;">DRIVERS &amp; HELPERS</font>
+                                <b>
+                                    <font style="color: rgb(66, 66, 66); font-size: 18px;">DRIVERS &amp; HELPERS</font>
+                                </b>
                             </span>
                         </div>
                     </div>
@@ -102,14 +134,16 @@
                         <div class="p-3">
                             <span class="fa fa-road mr-4 fa-4x" data-original-title="" title=""
                                 aria-describedby="tooltip251146"
-                                style="color: rgb(66, 66, 66); font-size: 48px;"></span>
+                                style="color: rgb(66, 66, 66); font-size: 35px;"></span>
                         </div>
                         <div>
                             <h2 class="text-primary font-weight-bold">
                                 <span class="counter" data-target="15" style="font-size: 48px;">15</span>
                             </h2>
                             <span class="font-weight-bold">
-                                <font style="color: rgb(66, 66, 66); font-size: 18px;">TOTAL ROUTES</font>
+                                <b>
+                                    <font style="color: rgb(66, 66, 66); font-size: 18px;">TOTAL ROUTES</font>
+                                </b>
                             </span>
                         </div>
                     </div>
@@ -117,22 +151,31 @@
                 <div class="col-12  col-sm-12-6 col-md-6 col-lg-3">
                     <div class="d-flex">
                         <div class="p-3">
-                            <span class="fa mr-4 fa-asterisk fa-4x" data-original-title="" title=""
-                                aria-describedby="tooltip800196"
-                                style="color: rgb(66, 66, 66); font-size: 18px;"></span>
+                            <b>
+                                <span class="fa mr-4 fa-asterisk fa-4x" data-original-title="" title=""
+                                    aria-describedby="tooltip800196"
+                                    style="color: rgb(66, 66, 66); font-size: 18px;"></span>
+                                <span class="fa mr-4 fa-asterisk fa-4x" data-original-title="" title=""
+                                    aria-describedby="tooltip800196"
+                                    style="color: rgb(66, 66, 66); font-size: 18px;"></span>
+                            </b>
                         </div>
                         <div>
                             <h2 class="text-primary font-weight-bold">
                                 <span class="counter" data-target="05" style="font-size: 48px;">05</span>
                             </h2>
                             <span class="font-weight-bold">
-                                <font style="color: rgb(66, 66, 66); font-size: 18px;">TECHNICIANS</font>
+                                <b>
+                                    <font style="color: rgb(66, 66, 66); font-size: 18px;">TECHNICIANS</font>
+                                </b>
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
 

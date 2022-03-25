@@ -1,5 +1,6 @@
 /* fonts  */
 @import url("https://fonts.googleapis.com/css2?family=Rambla:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Festive&family=Lobster&display=swap");
 
 /* resets */
 * {
@@ -56,9 +57,28 @@ body {
 }
 
 .banner-image-2 {
-  background-image: url("../img/bg-2.jpg");
+  background-image: url("../img/home-2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width: 100%;
+}
+.banner-image-3 {
+  background-image: url("../img/bg-about.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40vh;
+}
+.banner-image-4 {
+  background-image: url("../img/bg-ticket.jpg");
   background-size: cover;
   height: 80%;
+}
+.banner-nav {
+  background-image: url("../img/bg-nav.jpg");
+  background-size: cover;
+  width: 100%;
 }
 
 .search-cover {
@@ -66,6 +86,22 @@ body {
   height: 50vh;
   width: 100%;
 }
+
+.schedule {
+  background-image: url("../img/bus-schedule.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width: 100%;
+}
+
+.howto {
+  background-image: url("../img/howto.jpg");
+  height: auto;
+  width: 100%;
+}
+
+
 
 .primary-color {
   color: var(--text-blue) !important;
@@ -181,7 +217,12 @@ body {
 }
 
 .page-footer {
-  background-color: var(--bg-blue);
+  /* background-color: var(--bg-blue); */
+  background-image: url("../img/footer-img.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 .footer-copyright {
   background-color: var(--bg-blue-light);
@@ -191,5 +232,15 @@ body {
   .footer .footer-link,
   .footer a i {
     padding: 0 0.7rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .vh-100 {
+    background-image: url("../img/bg-img.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
   }
 }

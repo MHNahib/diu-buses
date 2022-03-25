@@ -1,61 +1,62 @@
 <%- include("layout/dashboardHeader") %>
+    <div class="container m-4">
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Ticket <b>Details</b></h2>
+                        </div>
 
-    <div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2>Ticket <b>Details</b></h2>
                     </div>
-
                 </div>
-            </div>
 
-            <!-- table  -->
+                <!-- table  -->
 
-            <div class="mt-4">
-                <div class="row">
-                    <div class="col-12">
-                        <%- include('./partials/messages') %>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th scope="col">#</th>
-                                        <th scope="col">Route</th>
-                                        <th scope="col">Seats</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for(var i=0; i < responce.length; i++) { %>
-                                        <tr>
-                                            <th scope="row">
-                                                <%= i + 1 %>
-                                            </th>
-                                            <td class="text-center">
-                                                <b>
-                                                    <%= responce[i].routeName %>
-                                                </b>
-                                            </td>
-                                            <td class="text-center"><b>
-                                                    <% for(var j=0; j < responce[i].bookedSeats.length-1; j++) { %>
-                                                        <%= responce[i].bookedSeats[j] %>,
-                                                            <% } %>
-                                                                <%= responce[i].bookedSeats[j] %>
-                                                </b>
-                                            </td>
-                                            <td class="text-center">
-                                                <%= responce[i].date %>
-                                            </td>
-
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <%- include('./partials/messages') %>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Route</th>
+                                            <th scope="col">Seats</th>
+                                            <th scope="col">Date</th>
                                         </tr>
-                                        <% } %>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <% for(var i=0; i < responce.length; i++) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= i + 1 %>
+                                                </th>
+                                                <td class="text-center">
+                                                    <b>
+                                                        <%= responce[i].routeName %>
+                                                    </b>
+                                                </td>
+                                                <td class="text-center"><b>
+                                                        <% for(var j=0; j < responce[i].bookedSeats.length-1; j++) { %>
+                                                            <%= responce[i].bookedSeats[j] %>,
+                                                                <% } %>
+                                                                    <%= responce[i].bookedSeats[j] %>
+                                                    </b>
+                                                </td>
+                                                <td class="text-center">
+                                                    <%= responce[i].date %>
+                                                </td>
+
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
 

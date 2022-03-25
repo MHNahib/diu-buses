@@ -1,35 +1,42 @@
 <%- include("layout/header") %>
+    <div class="container-fluid" style="background: rgb(0,77,124);
+background: linear-gradient(90deg, rgba(0,77,124,1) 0%, rgba(8,14,51,1) 35%, rgba(73,19,56,1) 100%);">
 
-    <div class="container features-type mb-4">
-        <div class="row align-items-center m-3">
 
-            <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
-                <h2 class="primary-color bold">Reset Password</h2>
-                <h5 class="primary-font mt-4 mb-4">Please input your email address to continune</h5>
+        <div class="container features-type">
+            <div class="row align-items-center me-3 ms-3 mt-0 pb-3">
 
-                <%- include('./partials/messages') %>
+                <div class="col-lg-7 col-md-12 text-sec mb-lg-0 mb-5">
+                    <h2 style="font-family: 'Lobster', cursive; font-size: 2.9rem;"
+                        class="primary-color text-center text-white bold">Reset Password</h2>
+                    <h5 class="primary-font text-center text-white mt-4 mb-4">Please input your email address to
+                        continune</h5>
 
-                    <form action="/reset-password" method="POST">
-                        <div class="mb-3">
-                            <label for="emailId" class="form-label primary-font">Email</label>
-                            <input type="text" class="form-control" id="emailId" name="email"
-                                aria-describedby="emailIdHelp">
-                            <div id="emailIdHelp" class="form-text">Enter your vaild email.
+                    <%- include('./partials/messages') %>
+
+                        <form action="/reset-password" method="POST">
+                            <div class="mb-3">
+                                <label for="emailId" class="form-label primary-font text-white">Email</label>
+                                <input type="text" class="form-control" id="emailId" name="email"
+                                    aria-describedby="emailIdHelp">
+                                <div id="emailIdHelp" style="color: #91989e !important" class="form-text">Enter your
+                                    vaild email.
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3 text-center">
-                            <input style="border-radius: 0 !important;" type="submit" class="btn btn-color w-100  mt-2"
-                                value="Send Reset Link">
-                        </div>
+                            <div class="mb-3 text-center">
+                                <input style="border-radius: 0 !important;" type="submit"
+                                    class="btn btn-color w-100  mt-2" value="Send Reset Link">
+                            </div>
 
 
-                    </form>
-            </div>
+                        </form>
+                </div>
 
-            <div class="col-lg-5 d-none d-lg-block ">
-                <div class="card border-0 ">
-                    <img src="/img/login.png" width="80%" class="img-fluid">
+                <div class="col-lg-5 d-none d-lg-block ">
+                    <div class="card border-0 ">
+                        <img src="/img/login2.jpeg" class="img-fluid">
+                    </div>
                 </div>
             </div>
         </div>

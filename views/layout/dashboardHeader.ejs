@@ -28,65 +28,85 @@
 <body>
 
     <!-- top bar  -->
-    <nav class="navbar fixed-top navbar-light bg-light">
+    <nav style="background: rgb(129, 124, 124);" class="navbar fixed-top navbar-light">
         <div class="container-fluid">
-            <a id="menu" class="navbar-brand ms-4" href="#"><i class="fas fa-bars"></i></a>
+            <b>
+                <a id="menu" class="navbar-brand ms-4" href="#"><i class="fas fa-bars"></i></a>
+            </b>
         </div>
     </nav>
 
-    <div id="side-bar" class="side-nav-close mt-5 ">
+    <div id="side-bar" class="side-nav-close mt-5 bg-dark">
         <!-- side menu  -->
-        <a href="/dashboard" class="nav-menu-item">
-            <i class="fas fa-dashboard m-2 ms-4"></i>
-            <span class="menu-text d-none">Dashboard</span>
-        </a>
+        <b>
+            <a href="/dashboard" class="nav-menu-item text-white">
+                <i class="fas fa-dashboard m-2 ms-4"></i>
+                <span class="menu-text d-none">Dashboard</span>
+            </a>
+        </b>
         <br>
-        <a href="/" class="nav-menu-item">
-            <i class="fas fa-home m-2 ms-4"></i>
-            <span class="menu-text d-none">
-                Home
-            </span>
-        </a>
+        <b>
+            <a href="/" class="nav-menu-item text-white">
+                <i class="fas fa-home m-2 ms-4"></i>
+                <span class="menu-text d-none">
+                    Home
+                </span>
+            </a>
+        </b>
         <br>
-        <a href="/search" class="nav-menu-item">
-            <i class="fas fa-ticket m-2 ms-4"></i>
-            <span class="menu-text d-none">Book Ticket</span></a>
+        <b>
+            <a href="/search" class="nav-menu-item text-white">
+                <i class="fas fa-ticket m-2 ms-4"></i>
+                <span class="menu-text d-none">Book Ticket</span></a>
+        </b>
         <br>
-        <a href="/dashboard/ticket" class="nav-menu-item">
-            <i class="fas fa-ticket m-2 ms-4"></i>
-            <span class="menu-text d-none">My Tickets</span></a>
+        <b>
+            <a href="/dashboard/ticket" class="nav-menu-item text-white">
+                <i class="fas fa-ticket m-2 ms-4"></i>
+                <span class="menu-text d-none">My Tickets</span></a>
+        </b>
         <br>
         <% if (user.isAdmin) { %>
-            <a href="/dashboard/bus" class="nav-menu-item">
-                <i class="fas fa-bus m-2 ms-4"></i>
-                <span class="menu-text d-none">Bus Details</span></a>
+            <b>
+                <a href="/dashboard/bus" class="nav-menu-item text-white">
+                    <i class="fas fa-bus m-2 ms-4"></i>
+                    <span class="menu-text d-none">Bus Details</span></a>
+            </b>
             <br>
             <% } %>
                 <% if (user.isAdmin) { %>
-                    <a href="/dashboard/drivers" class="nav-menu-item">
-                        <i class="fas fa-user m-2 ms-4"></i>
-                        <span class="menu-text d-none">Driver Details</span></a>
+                    <b>
+                        <a href="/dashboard/drivers" class="nav-menu-item text-white">
+                            <i class="fas fa-user m-2 ms-4"></i>
+                            <span class="menu-text d-none">Driver Details</span></a>
+                    </b>
                     <br>
                     <% } %>
                         <% if (user.isAdmin) { %>
-                            <a href="/dashboard/route" class="nav-menu-item">
-                                <i class="fas fa-location m-2 ms-4"></i>
-                                <span class="menu-text d-none">Route Details</span></a>
+                            <b>
+                                <a href="/dashboard/route" class="nav-menu-item text-white">
+                                    <i class="fas fa-location m-2 ms-4"></i>
+                                    <span class="menu-text d-none">Route Details</span></a>
+                            </b>
                             <br>
                             <% } %>
                                 <% if (user.isAdmin) { %>
-                                    <a href="/dashboard/schedule" class="nav-menu-item">
-                                        <i class="fas fa-calendar m-2 ms-4"></i>
-                                        <span class="menu-text d-none">Schedule Details</span></a>
+                                    <b>
+                                        <a href="/dashboard/schedule" class="nav-menu-item text-white">
+                                            <i class="fas fa-calendar m-2 ms-4"></i>
+                                            <span class="menu-text  d-none">Schedule Details</span></a>
+                                    </b>
                                     <br>
                                     <% } %>
-                                        <a href="/logout" class="nav-menu-item">
-                                            <i class="fas fa-power-off m-2 ms-4"></i>
-                                            <span class="menu-text d-none">Logout</span></a>
+                                        <b>
+                                            <a href="/logout" class="nav-menu-item text-white">
+                                                <i class="fas fa-power-off m-2 ms-4"></i>
+                                                <span class="menu-text d-none">Logout</span></a>
+                                        </b>
                                         <br>
 
     </div>
 
     <div id="content-overlay-id" class=""></div>
 
-    <div id="content" class="content">
+    <div id="content" class="container m-4 p-4">

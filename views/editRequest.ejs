@@ -1,68 +1,70 @@
 <%- include("layout/dashboardHeader") %>
-    <div class="container">
+    <div class="container m-4">
+        <div class="container">
 
-        <%- include('./partials/messages') %>
-            <form method="post" action="/dashboard/request/<%= responce._id %>">
-                <div class="mb-3">
-                    <label for="routeId" class="form-label">Route No</label>
-                    <select class="form-select" name="routeId">
-                        <% for(var i=0; i < route.length; i++) { %>
-                            <option value="<%= route[i]._id %>">
-                                <%= route[i].routeNo %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="startTimeId" class="form-label">Time</label>
-                    <input type="time" class="form-control" id="startTimeId" name="startTime"
-                        value="<%= responce.startTime %>">
-                </div>
-                <div class="mb-3">
-                    <label for="startId" class="form-label">Starting position</label>
-                    <select class="form-select" name="start">
-                        <% for(var i=0; i < location.length; i++) { %>
-                            <option value="<%= location[i] %>">
-                                <%= location[i] %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="startId" class="form-label">Destination</label>
-                    <select class="form-select" name="destination">
-                        <% for(var i=0; i < location.length; i++) { %>
-                            <option value="<%= location[i] %>">
-                                <%= location[i] %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="busId" class="form-label">Bus Name</label>
-                    <select class="form-select" name="busId">
-                        <% for(var i=0; i < bus.length; i++) { %>
-                            <option value="<%= bus[i]._id %>">
-                                <%= bus[i].name %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
-                <div>
-                    <label for="driverId" class="form-label">Driver Name</label>
-                    <select class="form-select" name="driverId">
-                        <% for(var i=0; i < driver.length; i++) { %>
-                            <option value="<%= driver[i]._id %>">
-                                <%= driver[i].driverName %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
+            <%- include('./partials/messages') %>
+                <form method="post" action="/dashboard/request/<%= responce._id %>">
+                    <div class="mb-3">
+                        <label for="routeId" class="form-label">Route No</label>
+                        <select class="form-select" name="routeId">
+                            <% for(var i=0; i < route.length; i++) { %>
+                                <option value="<%= route[i]._id %>">
+                                    <%= route[i].routeNo %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="startTimeId" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="startTimeId" name="startTime"
+                            value="<%= responce.startTime %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="startId" class="form-label">Starting position</label>
+                        <select class="form-select" name="start">
+                            <% for(var i=0; i < location.length; i++) { %>
+                                <option value="<%= location[i] %>">
+                                    <%= location[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="startId" class="form-label">Destination</label>
+                        <select class="form-select" name="destination">
+                            <% for(var i=0; i < location.length; i++) { %>
+                                <option value="<%= location[i] %>">
+                                    <%= location[i] %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="busId" class="form-label">Bus Name</label>
+                        <select class="form-select" name="busId">
+                            <% for(var i=0; i < bus.length; i++) { %>
+                                <option value="<%= bus[i]._id %>">
+                                    <%= bus[i].name %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="driverId" class="form-label">Driver Name</label>
+                        <select class="form-select" name="driverId">
+                            <% for(var i=0; i < driver.length; i++) { %>
+                                <option value="<%= driver[i]._id %>">
+                                    <%= driver[i].driverName %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
 
 
 
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
-            </form>
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
 
+        </div>
     </div>
     <%- include("layout/dashboardFooter") %>
