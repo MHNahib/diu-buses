@@ -9,7 +9,11 @@ const mongoose = require("mongoose");
 const router = express.Router();
 
 router.get("/", auth, restrict, async (req, res) => {
-  const schedule = await Schedule.find().sort("startTime date");
+  const schedule = await Schedule.find({
+    date: { $gte: new Date().toISOString().slice(0, 10) },
+  })
+    .sort("startTime date")
+    .limit(20);
 
   //   console.log(schedule);
   res.render("schedule", { responce: schedule });
