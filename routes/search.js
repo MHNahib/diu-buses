@@ -27,7 +27,7 @@ router.get("/", user, async (req, res) => {
 });
 
 // search schedule
-router.post("/", async (req, res) => {
+router.post("/", user, async (req, res) => {
   // validate request
   const { error } = validation(req.body);
   if (error)
