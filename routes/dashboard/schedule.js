@@ -19,6 +19,17 @@ router.get("/", auth, restrict, async (req, res) => {
   res.render("schedule", { responce: schedule });
 });
 
+router.post("/search", auth, restrict, async (req, res) => {
+  const schedule = await Schedule.find({
+    date: { $eq: req.body.date },
+  }).sort("startTime");
+
+  //   console.log(schedule);
+  res.render("schedule", {
+    responce: schedule,
+  });
+});
+
 // add scadule view
 router.get("/add", auth, restrict, async (req, res) => {
   const bus = await Bus.find().select("name").sort("name");
@@ -71,7 +82,7 @@ router.post("/", auth, restrict, async (req, res) => {
       location,
     });
 
-  console.log(req.body);
+  // console.log(req.body);
 
   // check bus
   bus = await Bus.findById(req.body.busId);
@@ -89,7 +100,7 @@ router.post("/", auth, restrict, async (req, res) => {
   const endDate = new Date(req.body.scheduleTo);
   const startDate = new Date(req.body.scheduleFrom);
   const diff = new Date(endDate - startDate) / (1000 * 3600 * 24);
-  console.log(`diff: ${diff}`);
+  // console.log(`diff: ${diff}`);
   const offDays = [];
 
   if (req.body.saturday === "on") offDays.push(6);
@@ -120,7 +131,7 @@ router.post("/", auth, restrict, async (req, res) => {
   } else {
     for (let i = 0; i <= diff; i++) {
       let day = startDate.getDay();
-      console.log(`day: ${day} `);
+      // console.log(`day: ${day} `);
       if (offDays.includes(day)) {
         const schedule = new Schedule({
           routeId: req.body.routeId,
@@ -139,8 +150,8 @@ router.post("/", auth, restrict, async (req, res) => {
         });
         await schedule.save();
         startDate.setDate(startDate.getDate() + 1);
-        console.log(i);
-        console.log(startDate);
+        // console.log(i);
+        // console.log(startDate);
       } else {
         startDate.setDate(startDate.getDate() + 1);
         continue;
