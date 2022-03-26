@@ -19,6 +19,47 @@
                         <input type="time" class="form-control" id="startTimeId" name="startTime">
                     </div>
                     <div class="mb-3">
+                        <label for="startTimeId" class="form-label">Schedule From</label>
+                        <input type="date" class="form-control" id="scheduleFromId" name="scheduleFrom">
+                    </div>
+                    <div class="mb-3">
+                        <label for="startTimeId" class="form-label">Schedule To</label>
+                        <input type="date" class="form-control" id="scheduleToId" name="scheduleTo">
+                    </div>
+
+                    <p class="text-left"><b> Select days</b></p>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="saturday" type="checkbox" id="saturday">
+                        <label class="form-check-label" for="saturday">Saturday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+
+                        <input class="form-check-input" name="sunday" type="checkbox" id="sunday">
+                        <label class="form-check-label" for="sunday">Sunday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="monday" type="checkbox" id="monday">
+                        <label class="form-check-label" for="monday">Monday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="tuesday" type="checkbox" id="tuesday">
+                        <label class="form-check-label" for="tuesday">Tuesday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="wednesday" type="checkbox" id="wednesday">
+                        <label class="form-check-label" for="wednesday">Wednesday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="thursday" type="checkbox" id="thursday">
+                        <label class="form-check-label" for="thursday">Thursday</label>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" name="friday" type="checkbox" id="friday">
+                        <label class="form-check-label" for="friday">Friday</label>
+                    </div>
+
+
+                    <div class="mb-3">
                         <label for="startId" class="form-label">Starting position</label>
                         <select class="form-select" name="start">
                             <% for(var i=0; i < location.length; i++) { %>

@@ -67,6 +67,8 @@ router.post("/", auth, restrict, async (req, res) => {
       location,
     });
 
+  console.log(req.body);
+
   // check bus
   bus = await Bus.findById(req.body.busId);
   if (!bus) return res.status(404).send(`Bus not found`);
@@ -78,22 +80,69 @@ router.post("/", auth, restrict, async (req, res) => {
   if (!route) return res.status(404).send(`Driver not found`);
 
   // add new bus
-  const schedule = new Schedule({
-    routeId: req.body.routeId,
-    routeName: route.routeName,
-    busStoppages: route.busStoppages,
-    busId: req.body.name,
-    busName: bus.name,
-    driverId: req.body.driverId,
-    driverName: driver.driverName,
-    phone: driver.phone,
-    startTime: req.body.startTime,
-    availabeSeats: bus.seats,
-    start: req.body.start,
-    destination: req.body.destination,
-  });
 
-  await schedule.save();
+  // calcuate date diffrerence
+  const endDate = new Date(req.body.scheduleTo);
+  const startDate = new Date(req.body.scheduleFrom);
+  const diff = new Date(endDate - startDate) / (1000 * 3600 * 24);
+  console.log(`diff: ${diff}`);
+  const offDays = [];
+
+  if (req.body.saturday === "on") offDays.push(6);
+  if (req.body.sunday === "on") offDays.push(0);
+  if (req.body.monday === "on") offDays.push(1);
+  if (req.body.tuesday === "on") offDays.push(2);
+  if (req.body.wednesday === "on") offDays.push(3);
+  if (req.body.thursday === "on") offDays.push(4);
+  if (req.body.friday === "on") offDays.push(5);
+
+  if (diff === 0) {
+    const schedule = new Schedule({
+      routeId: req.body.routeId,
+      routeName: route.routeName,
+      busStoppages: route.busStoppages,
+      busId: req.body.name,
+      busName: bus.name,
+      driverId: req.body.driverId,
+      driverName: driver.driverName,
+      phone: driver.phone,
+      startTime: req.body.startTime,
+      availabeSeats: bus.seats,
+      start: req.body.start,
+      destination: req.body.destination,
+      date: startDate,
+    });
+    await schedule.save();
+  } else {
+    for (let i = 0; i <= diff; i++) {
+      let day = startDate.getDay();
+      console.log(`day: ${day} `);
+      if (offDays.includes(day)) {
+        const schedule = new Schedule({
+          routeId: req.body.routeId,
+          routeName: route.routeName,
+          busStoppages: route.busStoppages,
+          busId: req.body.name,
+          busName: bus.name,
+          driverId: req.body.driverId,
+          driverName: driver.driverName,
+          phone: driver.phone,
+          startTime: req.body.startTime,
+          availabeSeats: bus.seats,
+          start: req.body.start,
+          destination: req.body.destination,
+          date: startDate,
+        });
+        await schedule.save();
+        startDate.setDate(startDate.getDate() + 1);
+        console.log(i);
+        console.log(startDate);
+      } else {
+        startDate.setDate(startDate.getDate() + 1);
+        continue;
+      }
+    }
+  }
 
   req.flash("success_msg", `Successfully added new schedule`);
   res.redirect("/dashboard/schedule");
