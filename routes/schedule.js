@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/", user, async (req, res) => {
   const schedule = await Schedule.find({
-    date: { $gte: new Date().toISOString().slice(0, 10) },
+    date: { $eq: new Date().toISOString().slice(0, 10) },
   }).sort("startTime");
 
   //   console.log(schedule);
